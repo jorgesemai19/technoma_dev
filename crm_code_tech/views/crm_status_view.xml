@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="crm_status_view_action" model="ir.actions.act_window">
+            <field name="name">CRM status</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.status</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">
+                {'sidebar_without_id':True}
+            </field>
+        </record>
+        <menuitem id="crm_status_menu" name="CRM status" parent="crm.crm_menu_config" action="crm_status_view_action" sequence="100"/>
+    </data>
+</odoo>

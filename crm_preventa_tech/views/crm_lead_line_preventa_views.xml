@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <record id="view_tree_lead_line_preventa" model="ir.ui.view">
+        <field name="name">crm.lead.form.preventa</field>
+        <field name="model">crm.lead.line.preventa</field>
+        <field name="arch" type="xml">
+            <tree string="Preventas" editable="bottom">
+                <field name="preventa_id" options="{'no_create_edit': True, 'no_create': True}"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

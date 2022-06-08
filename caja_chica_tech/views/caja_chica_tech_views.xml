@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="caja_chica_tech.cajas_tree_view">
+            <field name="name">caja_chica_tech.cajas_tree_view</field>
+            <field name="model">ruc.cajas</field>
+            <field name="inherit_id" ref="caja_chica.cajas_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='obs']" position="after">
+                    <field name="saldo_inicial"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_caja_chica_tech_voucher_purchase_form" model="ir.ui.view">
+            <field name="name">caja.chica.tech.voucher.purchase.form</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_purchase_receipt_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="reposicion_caja"/>
+                    <field name="caja_viatico" invisible="1"/>
+                    <field name="diario_caja_related" invisible="1"/>
+                     <field name="caja_id" domain="[('id' , 'in', diario_caja_related)]"
+                            options="{'no_create_edit': True, 'no_create': True,
+                            'no_open': True}" attrs="{'invisible': [('caja_viatico','=', False),
+                            ('reposicion_caja', '=', False)],
+                            'required': ['|', ('caja_viatico', '=', True), ('reposicion_caja', '=', True)]}"
+                     />
+                </field>
+            </field>
+        </record>
+
+         <record id="view_caja_chica_journale_tech_inh" model="ir.ui.view">
+                    <field name="name">view.account_journale_tech.inh.caja.chica</field>
+                    <field name="model">account.journal</field>
+                    <field name="type">form</field>
+                    <field name="inherit_id" ref="caja_chica.view_caja_chica_journale_inh"/>
+                    <field name="arch" type="xml">
+                    <xpath expr="//field[@name='caja_chica']" position="after">
+                            <field name="caja_viatico"/>
+                    </xpath>
+                    </field>
+         </record>
+
+          <record id="view_caja_chica_tech_payment_invoice_form" model="ir.ui.view">
+                <field name="name">view.caja_chica_tech.payment_invoice_form</field>
+                <field name="model">account.payment</field>
+                <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+                <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="caja_viatico" invisible="1"/>
+                    <field name="caja_id" attrs="{'invisible':[('caja_viatico', '=', False)],
+                                            'required': [('caja_viatico', '=', True)]}"
+                           domain="[('state', '=', 'abierto'),('diario_caja', '=', journal_id)]"/>
+                </xpath>
+                </field>
+        </record>
+
+
+    </data>
+</odoo>

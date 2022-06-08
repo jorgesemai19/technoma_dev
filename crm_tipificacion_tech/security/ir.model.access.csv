@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_modelo_tipificacion_proyecto_group_user,crm.modelo.tipificacion.proyecto,model_crm_modelo_tipificacion_proyecto,base.group_user,1,1,1,1
+access_crm_escala_facturacion,crm.escala.facturacion,model_crm_escala_facturacion,base.group_user,1,1,1,1
+access_crm_escala_rentabilidad,crm.escala.rentabilidad,model_crm_escala_rentabilidad,base.group_user,1,1,1,1
+access_crm_escala_complejidad,crm.escala.complejidad,model_crm_escala_complejidad,base.group_user,1,1,1,1
+access_crm_escala_estrategico,crm.escala.estrategico,model_crm_escala_estrategico,base.group_user,1,1,1,1
+access_crm_escala_tipo_proyecto,crm.escala.tipo.proyecto,model_crm_escala_tipo_proyecto,base.group_user,1,1,1,1

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+        <!-- Configuration/Project /Motivo de Perdida Menu -->
+        <record id="licitaciones_motivos_perdida_action" model="ir.actions.act_window">
+            <field name="name">Motivos de Perdida</field>
+            <field name="res_model">licitaciones_tech.motivo_perdida</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_licitaciones_tech_motivo_perdida"
+            action="licitaciones_motivos_perdida_action"
+            parent="project.menu_project_config"
+            sequence="12"/>
+</odoo>

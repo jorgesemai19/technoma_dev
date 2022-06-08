@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record model="ir.ui.view" id="crm_lead_tipo_proyecto_view">
+            <field name="name">crm.lead.tipo.proyecto.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
+            <field name="arch" type="xml">
+                <field name="tag_ids" position="after">
+                    <field name="margen" string="Margen(%)" widget="integer"/>
+                    <field name="rentabilidad" string="Rentabilidad(%)" widget="integer"/>
+                </field>
+                <field name="team_id" position="after">
+                    <field name="modelo_tipificacion_proyecto_id" invisible="1"/>
+                    <field name="stage_name" invisible="1"/>
+                    <field name="valor_complejidad" options="{'no_create_edit': True, 'no_create': True}"
+                           attrs="{'required': [('planned_revenue', '>', 0)]}"/>
+                    <field name="valor_estrategico" options="{'no_create_edit': True, 'no_create': True}"
+                           attrs="{'required': [('planned_revenue', '>', 0)]}"/>
+                    <field name="tipo_proyecto" attrs="{'invisible': ['&amp;', ('stage_name', '!=', 'Ganado'),
+                    ('active', '=', True)]}"/>
+                     <field name="puntos_proyecto" invisible="True"/>
+                </field>
+            </field>
+        </record>
+</odoo>

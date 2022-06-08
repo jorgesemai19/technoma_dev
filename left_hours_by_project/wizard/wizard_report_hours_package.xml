@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="wizard_report_package_hours_form" model="ir.ui.view">
+            <field name="name">wizard.report.package.hours.form</field>
+            <field name="model">wizard.report.package.hours</field>
+            <field name="arch" type="xml">
+                <form string="Report">
+                    <group class="oe_title">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="state"/>
+                        <field name="partner_id"/>
+                        <field name="integer_hours"/>
+                        <field name="company_id" readonly="1" force_save="1"/>
+                    </group>
+                    <footer>
+                        <button name="print_report_package_hour" string="Print PDF" type="object" class="btn-primary"/>
+                        <button name="print_report_package_hour_xls" string="Print XLSX" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_report_package_hours_action" model="ir.actions.act_window">
+            <field name="name">Report package hours</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.report.package.hours</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_report_package_hours_form"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

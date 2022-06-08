@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="report_begin_end_format" inherit_id="hr_timesheet_report.report">
+       <xpath expr="//table[@class='table table-sm']/tbody" position="replace">
+           <t t-set="group_colspan" t-value="len(report.entry_field_ids) + 1"/>
+           <t t-foreach="report.group_ids" t-as="group">
+               <tr t-if="group.name" class="o_line_section">
+                   <th t-att-colspan="group_colspan">
+                       <span t-field="group.name"/>
+                   </th>
+               </tr>
+               <tr>
+                   <th t-foreach="report.entry_field_ids" t-as="field">
+                       <span t-field="field.field_title"/>
+                   </th>
+                   <th class="text-right">
+                       <span t-esc="uom_hour.name"/>
+                   </th>
+               </tr>
+               <tr t-foreach="group.entry_ids" t-as="entry">
+                   <td t-foreach="report.entry_field_ids" t-as="field">
+                       <t t-if="field.field_type != 'bool'" >
+                           <span
+                                   t-if="field.field_name == 'unit_amount'"
+                                   t-att-class="field.cell_classes"
+                                   t-raw="entry.render_value(field.field_name)"
+                            />
+                           <t t-if="field.field_name in ('time_start', 'time_stop')" >
+                               <span
+                                       t-if="report.time_format == 'hh_mm'"
+                                       t-att-class="field.cell_classes"
+                                       t-raw="float((entry.render_value(field.field_name)).replace(',', '.')) if field.field_name in ('time_start', 'time_stop') else ''"
+                                       t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour', 'round': 'minute'}"
+                                />
+                               <span
+                                       t-elif="report.time_format == 'hh_mm_ss'"
+                                       t-att-class="field.cell_classes"
+                                       t-raw="float((entry.render_value(field.field_name)).replace(',', '.'))"
+                                       t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour'}"
+                                />
+                           </t>
+                           <t t-else="">
+                               <span
+                                       t-att-class="field.cell_classes"
+                                       t-raw="entry.render_value(field.field_name)"
+                               />
+                           </t>
+                       </t>
+                       <t t-else="">
+                           <span
+                              t-att-class="field.cell_classes"
+                              t-raw="entry.render_value(field.field_name)"
+                           />
+                       </t>
+                   </td>
+                   <td class="text-right">
+                       <span
+                               t-if="report.time_format == 'hh_mm'"
+                               t-field="entry.total_unit_amount"
+                               t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour', 'round': 'minute'}"
+                       />
+                       <span
+                               t-elif="report.time_format == 'hh_mm_ss'"
+                               t-field="entry.total_unit_amount"
+                               t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour'}"
+                       />
+                       <span
+                               t-elif="report.time_format == 'decimal'"
+                               t-field="entry.total_unit_amount"
+                               t-options="{'widget': 'float', 'precision': 2}"
+                       />
+                   </td>
+               </tr>
+               <tr class="o_subtotal">
+                   <t t-if="len(report.entry_field_ids) > 1" t-for="len(report.entry_field_ids) - 1">
+                       <td/>
+                   </t>
+                   <td class="text-right"><strong>Subtotal</strong></td>
+                   <td class="text-right">
+                       <strong
+                               t-if="report.time_format == 'hh_mm'"
+                               t-esc="group.total_unit_amount"
+                               t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour', 'round': 'minute'}"
+                       />
+                       <strong
+                               t-elif="report.time_format == 'hh_mm_ss'"
+                               t-esc="group.total_unit_amount"
+                               t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour'}"
+                       />
+                       <strong
+                               t-elif="report.time_format == 'decimal'"
+                               t-esc="group.total_unit_amount"
+                               t-options="{'widget': 'float', 'precision': 2}"
+                       />
+                   </td>
+               </tr>
+           </t>
+       </xpath>
+    </template>
+</odoo>

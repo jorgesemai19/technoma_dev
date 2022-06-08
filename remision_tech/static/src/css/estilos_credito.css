@@ -1,0 +1,192 @@
+body{
+    font-size: 15px;
+}
+/*##################FECHA EMISION######################*/
+#id_fecha_emision{
+    position:absolute;
+    /*top:3.60cm;*/
+    top:10.75cm;
+    left:9.55cm;
+    width: 8cm;
+}
+/*###############CONDICION DE VENTA#####################*/
+#id_condicion_venta_contado{
+    position:absolute;
+    /*top:3.60cm;*/
+    top:10.75cm;
+    left:31.0cm
+}
+#id_condicion_venta_credito{
+    position:absolute;
+    /*top:3.60cm;*/
+    top:10.75cm;
+    left:35.85cm;
+}
+
+/*###############NOMBRE O RAZON SOCIAL######################*/
+#id_nombre_razon_social{
+    position: absolute;
+    /*top:4.10cm;*/
+    top:11.75cm;
+    left:11.70cm;
+    width: 15cm;
+}
+
+/*############NUMERO RUC CLIENTE##############################*/
+#id_ruc_cliente{
+    position:absolute;
+    /*top:4.10cm;*/
+    top:12.80cm;
+    left:6.15cm;
+    width:4cm;
+}
+/*#############DIRECCION####################################*/
+#id_direccion{
+    position: absolute;
+    /*top:4.70cm;*/
+    top:13.80cm;
+    left:7.55cm;
+    width: 15cm;
+}
+
+/*#################TELEFONO CLIENTE######################*/
+/*#id_telefono{*/
+/*    position:absolute;*/
+/*    !*top:4.70cm;*!*/
+/*    top:6.50cm;*/
+/*    left: 28.20cm;*/
+/*    width: 6cm;*/
+/*}*/
+
+/*##################LISTA DE PRODUCTOS#######################*/
+
+/*######################TABLA PRODUCTO########################*/
+.tabla_productos{
+    width: 33.7cm;
+    position: absolute;
+    /*top:5.90cm;*/
+    top:17.05cm;
+    left:3.70cm;
+    right: 0.70cm;
+}
+.tabla_productos tbody, td{
+    /*border:1px solid black;*/
+    line-height: 0.40cm;
+}
+/*#######################CODIGO##########################*/
+/*#id_codigo{*/
+/*    width: 2cm;*/
+/*    font-size:15px;*/
+/*    text-align:left;*/
+/*}*/
+/*#######################CANTIDAD#########################*/
+#id_cantidad{
+    width: 1.0cm;
+    text-align:left;
+    /*font-size:15px;*/
+}
+/*#################DESCRIPCION#############################*/
+#id_descripcion{
+    /*font-size: 15px;*/
+    width: 10cm;
+    text-align:left;
+}
+
+/*####################PRECIO UNITARIO#####################*/
+/*#id_precio_unitario{*/
+/*    text-align: right;*/
+/*    width:2cm;*/
+/*    !*font-size:15px;*!*/
+/*}*/
+/*####################IMPUESTOS##########################*/
+#exenta1{width: 2.50cm;text-align:right;}
+#exenta2{width: 2.50cm;text-align:right;}
+#exenta3{width: 2.50cm;text-align:right;}
+
+#cinco1{width: 2.50cm;text-align:right;}
+#cinco2{width: 2.50cm;text-align:right;}
+#cinco3{width: 2.50cm;text-align:right;}
+
+#diez1{width: 2.50cm; text-align:right;}
+#diez2{width: 2.50cm; text-align:right;}
+#diez3{width: 2.50cm; text-align:right;}
+
+/*###############VALOR PARCIAL###########################*/
+#p_valor_parcial{
+    /*border:1px solid black;*/
+    width: 20cm;
+    position: absolute;
+    /*top:11.0cm;*/
+
+    top:46.50cm;
+    left:25.50cm;
+    /*font-size: 15px;*/
+}
+
+#p_valor_exenta{}
+#p_valor_5{
+    margin-left: 3.50cm;
+}
+#p_valor_10{
+    margin-left:3.50cm;
+}
+
+/*##################TOTAL A PAGAR NUMERO#################*/
+/*#total_pagar_numero{*/
+/*    position: absolute;*/
+/*    !*top:11.60cm;*!*/
+/*    top:16.75cm;*/
+/*    !*left:23.70cm;*!*/
+/*    left:33.95cm;*/
+/*    width: 3cm;*/
+/*    !*font-size: 15px;*!*/
+/*    !*border:1px solid black;*!*/
+/*}*/
+
+/*#######################TOTAL A PAGAR LETRA###############*/
+#total_pagar_letra
+{
+    position:absolute;
+    /*top:11.60cm;*/
+    top:48.10cm;
+    left:8.70cm;
+    width: 23cm;
+    /*font-size: 13px;*/
+}
+
+/*#######################TABLA LIQUIDACION IVA##################*/
+.tabla_liquidacion_iva{
+    position: absolute;
+    /*top:12.0cm;*/
+    top:49.85cm;
+    width:100%;
+    left:1%;
+    right: 3%;
+    /*border:1px solid black;*/
+}
+/*###################ESPACIO ENTRE FILA#################*/
+#liquidacion_espacio{
+    width: 20%;
+}
+/*########################LIQUIDACION IVA 5#####################*/
+#liquidacion_iva_5{
+    /*text-align:left;*/
+    /*font-size:15px;*/
+    width:30%;
+    text-align: right;
+}
+/*####################LIQUIDACION IVA 10#######################*/
+#liquidacion_iva_10{
+    /*text-align:left;*/
+    /*font-size:15px;*/
+    width: 20%;
+    text-align: center;
+}
+/*##################LIQUIDACION TOTAL IVA#################################*/
+#liquidacion_total_iva{
+    /*text-align:left;*/
+    /*font-size:15px;*/
+    margin-left:5%;
+    width:40%;
+    text-align: center;
+}

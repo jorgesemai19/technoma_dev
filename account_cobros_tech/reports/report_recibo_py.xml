@@ -1,0 +1,91 @@
+<odoo>
+    <template id="report_recibo_py_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <link rel="stylesheet" href="/account_payment_py/static/src/css/account_payment.css"/>
+                        <div class="col-12">
+                            <h2>Recibo: <span t-field="o.name"/></h2>
+                        </div>
+                        <div class="row">
+                            <span class="negrita">Fecha:</span>  <span t-field="o.payment_date"/>
+                            <br/>
+                            <span class="negrita">Cliente:</span>  <span t-field="o.partner_id.name"/>
+                            <br/>
+                            <span class="negrita">Diario:</span>  <span t-field="o.journal_id.name"/>
+                            <br/>
+                            <span class="negrita">Monto:</span>  <span t-field="o.amount"/>
+                            <br/>
+                            <span class="negrita">Moneda:</span>  <span t-field="o.currency_id.name"/>
+                        </div>
+                        <br/>
+                        <br/>
+                        <t t-if="o.issued_check_ids">
+                            <h3>Detalles del Cheque</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Numero</th>
+                                        <th>Empresa</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="total_pago" t-value="0"/>
+                                    <tr t-foreach="o.issued_check_ids" t-as="cheque">
+                                        <td><span t-field="cheque.number"/></td>
+                                        <t t-if="cheque.a_nombre_de">
+                                            <td><span t-field="cheque.a_nombre_de"/></td>
+                                        </t>
+                                        <t t-elif="cheque.voucher_id.partner_id">
+                                            <td><span t-field="cheque.pago_voucher.partner_id.name"/></td>
+                                        </t>
+                                        <t t-else="">
+                                            <td></td>
+                                        </t>
+                                        <td>
+                                            <t t-set="total_pago" t-value="total_pago+cheque.amount"/>
+                                            <span t-esc="o.agregar_punto_de_miles(cheque.amount)"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>TOTAL</td>
+                                        <td><span t-esc="o.agregar_punto_de_miles(total_pago)"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br/><br/><br/>
+                        </t>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <b><span>Hecho Por: </span></b>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="col-6">
+                                <b><span>Recibido Por: </span></b>
+                            </div>
+                        </div>
+
+                        <br/><br/><br/>
+                        <div class="row">
+                            <div class="col-6">
+                                <b><span>Autorizado Por: </span></b>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="col-6">
+                                <b><span>Aclaración: </span></b>
+                            </div>
+                        </div>
+                        <br/><br/>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

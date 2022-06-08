@@ -1,0 +1,332 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* crm_preventa_tech
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2020-03-08 13:13+0000\n"
+"Last-Translator: Antonio Pérez Ruth <antonio.perez@makrin.es>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: crm_preventa_tech
+#: model:ir.model,name:crm_preventa_tech.model_crm_preventa_report
+msgid "CRM Pipeline by Preventa Analysis"
+msgstr "CRM Pipeline por Analísis de preventa"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__campaign_id
+msgid "Campaing"
+msgstr "Campaña"
+
+
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa.field_crm_preventa_report__date_closed
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Closed Date"
+msgstr "Fecha de cierre"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__company_id
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Company"
+msgstr "Compañía"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__partner_name
+msgid "Contact Name"
+msgstr "Nombre del contacto"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__lead_id
+msgid "Lead"
+msgstr "Oportunidad"
+
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__date_conversion
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Conversion Date"
+msgstr "Fecha de Conversión"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Conversion Date from Lead to Opportunity"
+msgstr "Fecha de Conversión de Iniciativa a Oportunidad"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__country_id
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Country"
+msgstr "País"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_product_report__create_date
+msgid "Create Date"
+msgstr "Fecha Creación"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Creation Date"
+msgstr "Fecha de creación"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Date Closed"
+msgstr "Fecha de cierre"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__date_deadline
+msgid "Deadline Date"
+msgstr "Fecha límite"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__display_name
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_lead_preventa.crm_opportunity_report_preventa_view_search
+msgid "Expected Closing"
+msgstr "Cierre esperado"
+
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Extended Filters"
+msgstr "Filtros extendidos"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__id
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__id
+msgid "ID"
+msgstr "ID"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa____last_update
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__write_uid
+msgid "Last Updated by"
+msgstr "Última modificación por"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__write_date
+msgid "Last Updated on"
+msgstr "Última modificación en"
+
+#. module: crm_preventa_tech
+#: selection:crm.preventa.report,type:0
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__lead_id
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Lead"
+msgstr "Iniciativa"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead__lead_line_preventa_ids
+msgid "Lead Lines"
+msgstr "Líneas Iniciativa"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__name
+msgid "Lead Name"
+msgstr "Nombre iniciativa"
+
+#. module: crm_preventa_tech
+#: model:ir.model,name:crm_preventa_tech.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Iniciativa/Oportunidad"
+
+#. module: crm_preventa_tech
+#: model:ir.model,name:crm_preventa_tech.model_crm_lead_line_preventa
+msgid "Line in CRM Lead"
+msgstr "Línea en Iniciativa CRM"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Lost"
+msgstr "Perdido"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__lost_reason
+#: model_terms:ir.ui.view,arch_db:crm_lead_product.crm_opportunity_report_preventa_view_search
+msgid "Lost Reason"
+msgstr "Razón Perdida"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "My Opportunities"
+msgstr "Mis Oportunidades"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Open"
+msgstr "Abierto"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__date_open
+msgid "Open Date"
+msgstr "Fecha de apertura"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_lead_product.crm_opportunity_report_preventa_view_search
+msgid "Opportunities Analysis"
+msgstr "Análisis de oportunidades"
+
+#. module: crm_preventa_tech
+#: selection:crm.preventa.report,type:0
+#: model_terms:ir.ui.view,arch_db:crm_lead_product.crm_opportunity_report_preventa_view_search
+msgid "Opportunity"
+msgstr "Oportunidad"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__partner_id
+msgid "Partner/Customer"
+msgstr "Empresa/Cliente"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_graph
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_pivot
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_tree
+msgid "Pipeline Analysis"
+msgstr "Análisis Pipeline"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.actions.act_window,help:crm_preventa_tech.crm_preventa_report_action
+msgid "Pipeline Analysis gives you an instant access to\n"
+"your opportunities with information such as the expected revenue, planned cost,\n"
+"missed deadlines or the number of interactions per opportunity. This report is\n"
+"mainly used by the sales manager in order to do the periodic review with the\n"
+"teams of the sales pipeline."
+msgstr ""
+"El análisis Pipeline proporciona en tiempo real acceso a tus oportunidades "
+"con información como los ingresos esperados, el número de "
+"interacciones por oportunidad o fechas límite incumplidas. Este informe es "
+"utilizado principalmente por el Gerente de ventas con el fin de realizar la "
+"revisión periódica con los equipos de canalización de ventas."
+
+#. module: crm_preventa_tech
+#: model:ir.actions.act_window,name:crm_preventa_tech.crm_product_report_action
+msgid "Pipeline by Preventa Analysis"
+msgstr "Pipeline por Análisis de preventa"
+
+#. module: crm_preventa_tech
+#: model:ir.ui.menu,name:crm_preventa_tech.crm_preventa_report_menu
+msgid "Pipeline by preventa"
+msgstr "Pipeline por preventa"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__planned_revenue
+msgid "Planned Revenue"
+msgstr "Ingresos previstos"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__planned_revenue
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.view_tree_lead_line
+msgid "Planned revenue"
+msgstr "Ingresos previstos"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__price_unit
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.view_tree_lead_line
+msgid "Price Unit"
+msgstr "Precio unitario"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__probability
+msgid "Probability"
+msgstr "Probabilidad"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_lead_line_preventa__preventa_id
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__preventa_id
+msgid "Preventa"
+msgstr "Preventa"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_case_form_view_leads_preventa
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_case_form_view_oppor_preventa
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.view_tree_lead_line_preventa
+msgid "Preventas"
+msgstr "Preventas"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__team_id
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Sales Team"
+msgstr "Equipo de Ventas"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__user_id
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Salesperson"
+msgstr "Comercial"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Show only lead"
+msgstr "Mostrar sólo iniciativa"
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Show only opportunity"
+msgstr "Mostrar sólo Oportunidad"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__stage_id
+#: model_terms:ir.ui.view,arch_db:crm_preventa.crm_opportunity_report_preventa_view_search
+msgid "Stage"
+msgstr "Etapa"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,field_description:crm_preventa_tech.field_crm_preventa_report__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: crm_preventa_tech
+#: model:ir.model.fields,help:crm_preventa_tech.field_crm_preventa_report__type
+msgid "Type is used to separate Leads and Opportunities"
+msgstr "El tipo se utiliza para separar las Iniciativas y las Oportunidades"
+
+
+#. module: crm_preventa_tech
+#: model_terms:ir.ui.view,arch_db:crm_preventa_tech.crm_opportunity_report_preventa_view_search
+msgid "Won"
+msgstr "Ganado"

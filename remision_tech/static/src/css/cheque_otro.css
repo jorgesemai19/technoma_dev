@@ -1,0 +1,360 @@
+
+/*.monto{*/
+    /*position: absolute;*/
+    /*!*left: 23cm;*!*/
+    /*left: 22.4cm;*/
+    /*top: 0.7cm;*/
+    /*font-size: 12px;*/
+    /*writing-mode: vertical-lr;*/
+/*}*/
+
+/*.fecha_talonario{*/
+    /*position: absolute;*/
+    /*!*left: 3.2cm;*!*/
+    /*left: 2.6cm;*/
+    /*top: 1.8cm;*/
+    /*font-size: 12px;*/
+/*}*/
+
+/*.orden{*/
+    /*position: absolute;*/
+    /*!*left: 3.2cm;*!*/
+    /*left: 2.6cm;*/
+    /*top: 2.5cm;*/
+    /*font-size: 12px;*/
+    /*text-align: left;*/
+    /*width: 140px;*/
+/*}*/
+
+/*.concepto{*/
+    /*position: absolute;*/
+    /*!*left: 3.7cm;*!*/
+    /*left: 3.1cm;*/
+    /*top: 3.3cm;*/
+    /*font-size: 12px;*/
+/*}*/
+/*.monto_talonario{*/
+    /*position: absolute;*/
+    /*!*left: 3.1cm;*!*/
+    /*left: 2.5cm;*/
+    /*top: 6.9cm;*/
+    /*font-size: 12px;*/
+/*}*/
+
+/*.proveedor{*/
+    /*position: absolute;*/
+    /*!*left: 11.5cm;*!*/
+    /*left: 10.9cm;*/
+    /*!*top: 2.9cm;*!*/
+    /*top: 3.2cm;*/
+    /*font-size: 12px;*/
+/*}*/
+/*.Letras{*/
+    /*position: absolute;*/
+    /*!*left: 11.5cm;*!*/
+    /*left: 10.9cm;*/
+    /*top: 3.9cm;*/
+    /*font-size: 12px;*/
+/*}*/
+
+/*.emision_dia{*/
+    /*position: absolute;*/
+    /*!*left: 17.9cm;*!*/
+    /*left: 17.3cm;*/
+    /*top: 2.1cm;*/
+    /*font-size: 12px;*/
+/*}*/
+/*.emision_mes{*/
+    /*position: absolute;*/
+    /*!*left: 19.2cm;*!*/
+    /*left: 18.6cm;*/
+    /*top: 2.1cm;*/
+    /*font-size: 12px;*/
+/*}*/
+/*.emision_ano{*/
+    /*position: absolute;*/
+    /*!*left: 21.5cm;*!*/
+    /*left: 20.9cm;*/
+    /*top: 2.1cm;*/
+    /*font-size: 12px;*/
+/*}*/
+
+/*.pago_dia{*/
+    /*position: absolute;*/
+    /*!*left: 24.2cm;*!*/
+    /*left: 23.6cm;*/
+    /*top: 2.1cm;*/
+    /*font-size: 12px;*/
+/*}*/
+/*.pago_mes{*/
+    /*position: absolute;*/
+    /*!*left: 25.8cm;*!*/
+    /*left: 25.2cm;*/
+    /*top: 2.1cm;*/
+    /*font-size: 12px;*/
+/*}*/
+/*.pago_ano{*/
+    /*position: absolute;*/
+    /*!*left: 27.5cm;*!*/
+    /*left: 26.9cm;*/
+    /*top: 2.1cm;*/
+    /*font-size: 12px;*/
+/*}*/
+
+/*2019-07-10-19-13*/
+
+
+
+/*.monto{*/
+/*    position: absolute;*/
+/*    left: 25.5cm;*/
+/*    !*left: 22.4cm;*!*/
+/*    top: 0.6cm;*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*.fecha_talonario{*/
+/*    position: absolute;*/
+/*    !*left: 3.2cm;*!*/
+/*    left: 2cm;*/
+/*    top: 2.2cm;*/
+/*    font-size: 14px;*/
+/*}*/
+
+/*.orden{*/
+/*    position: absolute;*/
+/*    !*left: 3.2cm;*!*/
+/*    left: 2cm;*/
+/*    top: 3.2cm;*/
+/*    font-size: 10px;*/
+/*    text-align: left;*/
+/*    width: 140px;*/
+/*    !*white-space:nowrap;*!*/
+/*}*/
+
+/*.concepto{*/
+/*    position: absolute;*/
+/*    !*left: 3.7cm;*!*/
+/*    left: 2.4cm;*/
+/*    top: 4cm;*/
+/*    font-size: 10px;*/
+/*}*/
+/*.monto_talonario{*/
+/*    position: absolute;*/
+/*    !*left: 3.1cm;*!*/
+/*    left: 2cm;*/
+/*    top: 7.9cm;*/
+/*    font-size: 16px;*/
+/*}*/
+
+/*.proveedor{*/
+/*    position: absolute;*/
+/*    left: 11cm;*/
+/*    !*left: 10.9cm;*!*/
+/*    !*top: 2.9cm;*!*/
+/*    top: 3.8cm;*/
+/*    font-size: 16px;*/
+/*    white-space:nowrap;*/
+/*    !*width: 100%;*!*/
+/*}*/
+/*.Letras{*/
+/*    position: absolute;*/
+/*    !*left: 11.5cm;*!*/
+/*    left: 7.7cm;*/
+/*    top: 4.5cm;*/
+/*    font-size: 15px;*/
+/*    width: 800px;*/
+/*    overflow-wrap: break-word;*/
+/*    line-height: 2em;*/
+/*    text-indent: 9em;*/
+/*    !*border:1px solid black;*!*/
+/*}*/
+
+/*.emision_dia{*/
+/*    position: absolute;*/
+/*    left: 18.85cm;*/
+/*    !*left: 17.3cm;*!*/
+/*    top: 2.30cm;*/
+/*    !*font-size: 14px;*!*/
+/*    font-size:16px;*/
+/*}*/
+/*.emision_mes{*/
+/*    position: absolute;*/
+/*    left: 20.3cm;*/
+/*    !*left: 18.6cm;*!*/
+/*    top: 2.30cm;*/
+/*    !*font-size: 14px;*!*/
+/*    font-size:16px;*/
+/*}*/
+/*.emision_ano{*/
+/*    position: absolute;*/
+/*    !*left: 21.5cm;*!*/
+/*    left:22.5cm;*/
+/*    top: 2.30cm;*/
+/*    !*font-size: 14px;*!*/
+/*    font-size:16px;*/
+/*}*/
+
+/*.pago_dia{*/
+/*    position: absolute;*/
+/*    left: 26.3cm;*/
+/*    !*left: 23.6cm;*!*/
+/*    top: 2.32cm;*/
+/*    !*font-size: 14px;*!*/
+/*    font-size:16px;*/
+/*}*/
+/*.pago_mes{*/
+/*    position: absolute;*/
+/*    left: 27.7cm;*/
+/*    !*left: 25.2cm;*!*/
+/*    top: 2.32cm;*/
+/*    !*font-size: 14px;*!*/
+/*    font-size:16px;*/
+/*}*/
+/*.pago_ano{*/
+/*    position: absolute;*/
+/*    !*left: 27.5cm;*!*/
+/*    left: 30cm;*/
+/*    top: 2.32cm;*/
+/*    !*font-size: 14px;*!*/
+/*    font-size:16px;*/
+/*}*/
+
+
+/*nuevo css*/
+.contenedor{
+    font-size: 30px;
+}
+
+.monto{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    left: 11.70cm;
+    /*left: 22.4cm;*/
+    top: 32.4cm;
+    font-size: 20px;
+}
+
+.fecha_talonario{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    /*left: 3.2cm;*/
+    left: 10.30cm;
+    top: 4.2cm;
+    font-size: 14px;
+}
+
+.orden{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    /*left: 3.2cm;*/
+    /*left: -5cm;*/
+    /*top: 3.2cm;*/
+    left: 8.80cm;
+    top: 5.4cm;
+    font-size: 10px;
+    text-align: left;
+    width: 140px;
+    /*white-space:nowrap;*/
+}
+
+.concepto{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    /*left: 3.7cm;*/
+    left: 2.4cm;
+    top: 4.2cm;
+    font-size: 10px;
+}
+.monto_talonario{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    /*left: 3.1cm;*/
+    left: 2.3cm;
+    top: 4.2cm;
+    font-size: 16px;
+}
+
+.proveedor{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    left: 8cm;
+    /*!*left: 10.9cm;*!*/
+    /*!*top: 2.9cm;*!*/
+    top: 17.8cm;
+    /*left: -2.5cm;*/
+    /*top: 4.5cm;*/
+    /*top: 19.80cm;*/
+    font-size: 16px;
+    white-space:nowrap;
+    /*width: 100%;*/
+}
+.Letras{
+    -webkit-transform: rotate(99grad);
+    /*transform: rotate(180grad);*/
+    position: absolute;
+    /*left: 11.5cm;*/
+    /*left: 7.7cm;*/
+    left: -2.9cm;
+    /*top: 4.5cm;*/
+    top: 22.80cm;
+    font-size: 15px;
+    width: 800px;
+    overflow-wrap: break-word;
+    line-height: 2em;
+    text-indent: 9em;
+    /*border:1px solid black;*/
+}
+
+.emision_dia{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    left: 10.2cm;
+    /*left: 17.3cm;*/
+    top: 25.0cm;
+    /*font-size: 14px;*/
+    font-size:16px;
+}
+.emision_mes{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    left: 10.2cm;
+    /*left: 18.6cm;*/
+    top: 26.0cm;
+    /*font-size: 14px;*/
+    font-size:16px;
+}
+.emision_ano{
+    -webkit-transform: rotate(99grad);
+    position: absolute;
+    /*left: 21.5cm;*/
+    left:22.5cm;
+    top: 2.30cm;
+    /*font-size: 14px;*/
+    font-size:16px;
+}
+
+.pago_dia{
+    position: absolute;
+    left: 26.3cm;
+    /*left: 23.6cm;*/
+    top: 2.32cm;
+    /*font-size: 14px;*/
+    font-size:16px;
+}
+.pago_mes{
+    position: absolute;
+    left: 27.7cm;
+    /*left: 25.2cm;*/
+    top: 2.32cm;
+    /*font-size: 14px;*/
+    font-size:16px;
+}
+.pago_ano{
+    position: absolute;
+    /*left: 27.5cm;*/
+    left: 30cm;
+    top: 2.32cm;
+    /*font-size: 14px;*/
+    font-size:16px;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <!--Group category for package hours-->
+        <record id="package_hours_category_group" model="ir.module.category">
+            <field name="name">Package Hours </field>
+            <field name="description">Package Hours</field>
+            <field name="sequence">3</field>
+
+
+        </record>
+
+    <!--Grupo Responsable donde tendra todos permisos-->
+        <record id="package_hours_manager_group" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="left_hours_by_project.package_hours_category_group"/>
+        </record>
+
+    <!--Grupo Usuario donde se restringira algunos permisos-->
+        <record id="package_hours_user_group" model="res.groups">
+            <field name="name">Usuario</field>
+            <field name="category_id" ref="left_hours_by_project.package_hours_category_group"/>
+        </record>
+    </data>
+</odoo>

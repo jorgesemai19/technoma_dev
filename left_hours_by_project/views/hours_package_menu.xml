@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="hours_package_menu_root" name="Hours package" parent="hr_timesheet.timesheet_menu_root" sequence="5"/>
+        <menuitem id="hours_package_menu" name="Hours package" parent="hours_package_menu_root" action="hours_package_view_action" sequence="5"/>
+        <menuitem id="hours_package_type_menu" name="Hours package type" parent="hours_package_menu_root" action="hours_package_type_view_action" sequence="6"/>
+        <menuitem id="hours_activity_type_menu" name="Activity type" parent="hours_package_menu_root" action="hours_activity_type_view_action" sequence="7"/>
+        <menuitem id="hours_package_report_menu" name="Hours package report" parent="hours_package_menu_root" action="left_hours_by_project.wizard_report_package_hours_action" sequence="8"/>
+        <menuitem id="hours_extra_report_menu" name="Extra Hours report" parent="hours_package_menu_root" action="left_hours_by_project.wizard_report_extra_hours_action" sequence="9"/>
+    </data>
+</odoo>

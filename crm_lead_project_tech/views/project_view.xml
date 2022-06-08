@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <record id="project_edit_form_view_oppor" model="ir.ui.view">
+        <field name="name">project.edit.form.view.oppor</field>
+        <field name="model">project.project</field>
+        <field name="priority">20</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="subtask_project_id" position="after">
+                <field name="lead_id"  attrs="{'invisible': [('lead_id', '=', 'False')]}" readonly="1" context = "{'form_view_ref': 'crm.crm_case_form_view_oppor'}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_task_edit_form_view_oppor" model="ir.ui.view">
+        <field name="name">project.task.edit.form.view.oppor</field>
+        <field name="model">project.task</field>
+        <field name="priority">20</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="date_last_stage_update" position="after">
+                <field name="lead_id"  attrs="{'invisible': [('lead_id', '=', 'False')]}" readonly="1" context = "{'form_view_ref': 'crm.crm_case_form_view_oppor'}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

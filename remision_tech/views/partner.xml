@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--Herencia res.partner para agregar chofer-->
+        <record id="view_remision_partner_form_inh" model="ir.ui.view">
+            <field name="name">view.remision.partner.form.inh</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//sheet/group/group/field[@name='category_id']" position="after">
+                <field name="chofer"/>
+            </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="view_project_licitacion_form" model="ir.ui.view">
+        <field name="name">project.licitacion.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="after">
+                <field name="tipo_licitacion" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project_task_type_licitacion_form" model="ir.ui.view">
+        <field name="name">project.task.type.licitacion.form</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <field name="mail_template_id" position="after">
+                <field name="proyecto_licitacion" attrs="{'invisible': 1}"/>
+                <field name="subestado_licitacion_adjudicada" attrs="{'invisible': [('proyecto_licitacion', '=', False)]}"/>
+                <field name="subestado_licitacion_ejecucion" attrs="{'invisible': [('proyecto_licitacion', '=', False)]}"/>
+                <field name="es_etapa_perdida" attrs="{'invisible': [('proyecto_licitacion', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+     <record id="view_project_task_licitacion_form" model="ir.ui.view">
+        <field name="name">project.task.licitacion.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field name="es_licitacion_adjudicada" attrs="{'invisible': 1}"/>
+                <field name="es_licitacion_ejecucion" attrs="{'invisible': 1}"/>
+                <field name="estado_licitacion_adjudicada" attrs="{'invisible': [('es_licitacion_adjudicada', '=', False)],
+                'required': [('es_licitacion_adjudicada', '=', True)]} "
+                       options="{'no_open': True, 'no_create': True}"/>
+                <field name="estado_licitacion_ejecucion" attrs="{'invisible': [('es_licitacion_ejecucion', '=', False)],
+                  'required': [('es_licitacion_ejecucion', '=', True)]}"
+                    options="{'no_open': True, 'no_create': True}"/>
+                <field name="es_perdido" invisible="1"/>
+                <field name="motivo_perdida_id" attrs="{'invisible': [('es_perdido', '!=', True)],
+                'readonly': [('es_perdido', '=', True)]}"/>
+                <field name="es_proyecto_licitacion" invisible="1"/>
+                <field name="tipo_procedimiento_id" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)],
+                'required': [('es_proyecto_licitacion', '=', True), ('parent_id', '=', False)]}" options="{'no_open': True, 'no_create': True}"/>
+                <field name="modalidad_procedimiento_id" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)],
+                'required': [('es_proyecto_licitacion', '=', True), ('parent_id', '=', False)]}" options="{'no_open': True, 'no_create': True}"/>
+                <field name="sistema_adjudicacion" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)],
+                'required': [('es_proyecto_licitacion', '=', True), ('parent_id', '=', False)]}"/>
+
+            </field>
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                <group>
+                    <label for="monto_llamado" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)]}"/>
+                    <div>
+                    <field name="monto_llamado" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)],
+                        'required': [('es_proyecto_licitacion', '=', True)]}" class="oe_inline" style="width: 60%"/>
+                     <field name="currency_llamado_id" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)],
+                        'required': [('es_proyecto_licitacion', '=', True)]}" domain="['|',['ambito','=','venta'],
+                        ['ambito','=',False]]" options="{'no_open': True, 'no_create': True}" class="oe_inline" style="width: 35%"/>
+                    </div>
+                </group>
+
+               <group>
+                    <label for="monto_adjudicado" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)]}"/>
+                    <div>
+                        <field name="monto_adjudicado" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)],
+                        'required': [('es_proyecto_licitacion', '=', True), ('es_licitacion_adjudicada', '=', True)]}" class="oe_inline" style="width: 60%"/>
+                        <field name="currency_adjudicado_id" attrs="{'invisible': ['|',('es_proyecto_licitacion', '!=', True),
+                ('parent_id', '!=', False)],
+                        'required': [('es_proyecto_licitacion', '=', True), ('es_licitacion_adjudicada', '=', True)]}"
+                               domain="['|',['ambito','=','venta'],
+                                ['ambito','=',False]]" options="{'no_open': True, 'no_create': True}" class="oe_inline"
+                        style="width: 35%"/>
+                    </div>
+               </group>
+            </xpath>
+
+            <button name="action_assign_to_me" position="after">
+                <button name="%(licitaciones_tech.perdida_action)d" string="Marcar Perdido"
+                                type="action" class="oe_highlight"
+                                context="{'default_task_id': active_id}"
+                                attrs="{'invisible': ['|','&amp;',('es_perdido', '=', True),
+                                ('es_proyecto_licitacion', '=', True),
+                                ('es_proyecto_licitacion', '!=', True)]}"/>
+            </button>
+        </field>
+    </record>
+
+    <record id="view_licitaciones_tech_perdidas_search" model="ir.ui.view">
+        <field name="name">perdidas.search</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <filter name="starred" position="after">
+                <filter name="Perdido" string="Licitacion Perdida" domain="[('es_perdido', '=', True),
+                ('es_proyecto_licitacion', '=', True)]" />
+            </filter>
+            <filter name="company" position="after">
+                <filter string="Motivo Perdida Licitacion" name="motivo_perdida_id"
+                        context="{'group_by':'motivo_perdida_id'}"/>
+                <filter string="Tipo Procedimiento Licitacion" name="tipo_procedimiento_id"
+                        context="{'group_by':'tipo_procedimiento_id'}"/>
+                <filter string="Modalidad Procedimiento Licitacion" name="tipo_procedimiento_id"
+                        context="{'group_by':'modalidad_procedimiento_id'}"/>
+                <filter string="Sistema Adjudicacion Licitacion" name="sistema_adjudicacion"
+                        context="{'group_by':'sistema_adjudicacion'}"/>
+            </filter>
+        </field>
+    </record>
+
+</odoo>

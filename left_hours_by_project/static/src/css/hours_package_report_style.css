@@ -1,0 +1,14 @@
+p{
+    font-size: 11px;
+    text-align: right;
+}
+.datoscompa{
+    text-align: right;
+    line-height: 1mm;
+}
+
+.title p{
+    text-align: left;
+    line-height: 5px;
+    font-size: 15px;
+}

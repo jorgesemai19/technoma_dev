@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <!-- NAME & FILE_NAME should be the same -->
+        <report
+            id="package_hour_report_button"
+            model="wizard.report.package.hours"
+            report_type="qweb-pdf"
+            string="Hours Package Report"
+            name="left_hours_by_project.hours_package_template"
+            file="left_hours_by_project.hours_package_template"
+        />
+        <report
+            id="extra_hour_report_button"
+            model="wizard.report.extra.hours"
+            report_type="qweb-pdf"
+            string="Extra Hours Report"
+            name="left_hours_by_project.extra_hours_template"
+            file="left_hours_by_project.extra_hours_template"
+        />
+        <report
+            id="package_hour_detail_report_button"
+            model="account.analytic.line"
+            report_type="qweb-pdf"
+            string="Hours Package Report Detailed"
+            name="left_hours_by_project.hours_package_detail"
+            file="left_hours_by_project.hours_package_detail"
+        />
+
+        <record id="report_hours_package_excel" model="ir.actions.report">
+            <field name="name">Hours Package</field>
+            <field name="model">wizard.report.package.hours</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">left_hours_by_project.report_hours_package_name</field>
+            <field name="report_file">left_hours_by_project.report_hours_package_name</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="custom_partner_report_excel" model="ir.actions.report">
+            <field name="name">Custom Partner Report</field>
+            <field name="model">wizard.res.partner.custom.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">left_hours_by_project.custom_partner_report_name</field>
+            <field name="report_file">left_hours_by_project.custom_partner_report_name</field>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

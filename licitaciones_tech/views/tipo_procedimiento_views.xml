@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="action_tipo_procedimiento" model="ir.actions.act_window">
+        <field name="name">Tipo Procedimiento Licitacion</field>
+        <field name="res_model">licitaciones_tech.tipo.procedimiento</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_tipo_procedimiento"
+              name="Tipo Procedimiento Licitacion"
+              action="action_tipo_procedimiento"
+              sequence="13"
+              parent="project.menu_project_config" />
+
+
+    <record id="view_tipo_procedimiento_form" model="ir.ui.view">
+    <field name="name">Tipo Procedimiento Licitacion</field>
+    <field name="model">licitaciones_tech.tipo.procedimiento</field>
+    <field name="arch" type="xml">
+      <form>
+          <sheet>
+               <group>
+                    <field name="nombre" required="True"/>
+               </group>
+          </sheet>
+
+      </form>
+    </field>
+  </record>
+
+  <record id="view_tipo_procedimiento_tree" model="ir.ui.view">
+    <field name="name">Tipo Procedimiento Licitacion</field>
+    <field name="model">licitaciones_tech.tipo.procedimiento</field>
+    <field name="arch" type="xml">
+      <tree>
+          <field name="nombre" />
+      </tree>
+    </field>
+  </record>
+</odoo>

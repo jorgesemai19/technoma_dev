@@ -1,0 +1,155 @@
+<odoo>
+    <template id="recibo_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                   <div class="page">
+                       <link rel="stylesheet" href="/account_cobros_tech/static/src/css/recibo.css"/>
+                       <div class="col-12">
+                           <h2>Recibo: <span t-field="o.name"/> </h2>
+                       </div>
+                       <div class="col-12">
+                       <table>
+                           <thead>
+                               <tr>
+                                   <th>Fecha</th>
+                                   <th>Cliente</th>
+                                   <th>Moneda</th>
+
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td><span t-field="o.fecha"/></td>
+                                   <td><span t-field="o.partner_id.name"/></td>
+                                   <td><span t-field="o.currency_id.name"/></td>
+                               </tr>
+                           </tbody>
+                       </table>
+                       <br/>
+                       <h2>Detalles Facturas</h2>
+                       <table>
+                           <thead>
+                               <tr>
+                                   <th>Nro. Factura</th>
+                                   <th>Fecha Factura</th>
+                                   <th>Pago</th>
+                                   <th>Monto Factura</th>
+
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <t t-set="total_monto" t-value="0"/>
+                               <t t-set="total_amount" t-value="0"/>
+                               <t t-foreach="o.pagos_facturas_ids" t-as="f">
+                                   <t t-set="total_monto" t-value="total_monto+f.monto"/>
+                                   <t t-set="total_amount" t-value="total_amount+f.amount_total"/>
+                                   <tr>
+                                       <td><span t-field="f.invoice_id.nro_factura"/> </td>
+                                       <td><span t-field="f.date_invoice"/> </td>
+
+                                       <!-- c -->
+                                       <t t-if= " o.currency_id.name != 'PYG' ">
+                                            <td><span t-esc="o.puntodemiles(o.cambiapuntoporcoma(f.monto))"/> </td>
+                                            <td><span t-esc="o.puntodemiles(o.cambiapuntoporcoma(o.sacasimbolo_(f.amount_total)))"/> </td>
+                                       </t>
+                                       <t t-else="">
+                                            <td><span t-esc="o.agregar_punto_de_miles(f.monto,o.currency_id)" /> </td>
+                                            <td><span t-esc="o.agregar_punto_de_miles(f.amount_total,o.currency_id)" /> </td>
+                                       </t>
+                                       <!-- -->
+
+
+                                       <!--<td><span t-esc="o.agregar_punto_de_miles(f.monto,o.currency_id)" /> </td>-->
+                                       <!--<td><span t-esc="o.agregar_punto_de_miles(f.amount_total,o.currency_id)" /> </td>-->
+                                   </tr>
+
+                               </t>
+                               <div class="negrita">
+                                   <td class="negrita" colspan="2">Totales</td>
+
+                                   <!-- c -->
+                                       <t t-if= "o.currency_id.name != 'PYG' ">
+                                           <td class="negrita"><span t-esc="o.puntodemiles(o.cambiapuntoporcoma(total_monto))"/> </td>
+                                           <td class="negrita"><span t-esc="o.puntodemiles(o.cambiapuntoporcoma(total_amount))"/> </td>
+                                       </t>
+                                       <t t-else="">
+                                            <td class="negrita"><span t-esc="o.agregar_punto_de_miles(total_monto,o.currency_id)"/> </td>
+                                            <td class="negrita"><span t-esc="o.agregar_punto_de_miles(total_amount,o.currency_id)"/> </td>
+                                       </t>
+                                       <!-- -->
+
+                                   <!--<td ><span t-esc="o.agregar_punto_de_miles(total_monto,o.currency_id)"/> </td>-->
+                                   <!--<td ><span t-esc="o.agregar_punto_de_miles(total_amount,o.currency_id)"/> </td>-->
+                               </div>
+                           </tbody>
+                       </table>
+                        <br/>
+                       <h2>Detalles Cobros</h2>
+                       <table>
+                           <thead>
+                               <tr>
+                                    <th>Forma de Pago</th>
+                                    <th>Nro de Cheque</th>
+                                    <th>Monto</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <t t-set="total_pago" t-value="0"/>
+                               <tr t-foreach="o.payment_ids" t-as="pago">
+                                   <t t-set="total_pago" t-value="total_pago+pago.amount"/>
+                                   <td><span t-field="pago.journal_id.name"/> </td>
+
+
+                                   <t t-if="pago.numero_cheque_recibo">
+                                       <td><span t-field="pago.numero_cheque_recibo"/> </td>
+                                   </t>
+                                   <t t-else="">
+                                       <td></td>
+                                   </t>
+                                   <t t-if= "o.currency_id.name != 'PYG' ">
+                                       <td><span t-esc="o.puntodemiles(o.cambiapuntoporcoma(pago.amount))"/> </td>
+                                   </t>
+                                   <t t-else="">
+                                       <td><span t-esc="o.agregar_punto_de_miles(pago.amount,o.currency_id)"/> </td>
+                                   </t>
+
+                                   <!--<td><span t-esc="o.agregar_punto_de_miles(pago.amount,o.currency_id)"/> </td>-->
+                               </tr>
+                               <td class="negrita">Total Pago</td>
+                               <td></td>
+                               <!-- c -->
+                               <t t-if= "o.currency_id.name != 'PYG' ">
+                                       <td class="negrita"><span t-esc="o.puntodemiles(o.cambiapuntoporcoma(total_pago))"/> </td>
+                                   </t>
+                                   <t t-else="">
+                                        <td class="negrita"><span t-esc="o.agregar_punto_de_miles(total_pago,o.currency_id)"/></td>
+                                   </t>
+
+                               <!--<td><span t-esc="o.agregar_punto_de_miles(total_pago,o.currency_id)"/></td>-->
+
+
+                           </tbody>
+                       </table>
+                       </div>
+                        <br/><br/><br/>
+                       <div class="row">
+                           <div class="col-12">
+                               <b>Observaciones:</b>
+                               <p t-field="o.obs"/>
+                           </div>
+                       </div>
+                       <br/><br/>
+                       <div class="row">
+                           <div class="col-6">
+                               <b><span t-esc="'Recibido Por: %s' % user.name"/></b>
+                           </div>
+                           <br/>
+                           <br/>
+                        </div>
+                   </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

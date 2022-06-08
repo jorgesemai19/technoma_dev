@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_timesheet_helpdesk_begin_end_form" model="ir.ui.view">
+        <field name="name">hr.timesheet.helpdesk.begin.end.form</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_timesheet.helpdesk_ticket_view_form_inherit_helpdesk_timesheet"/>
+        <field name="mode">extension</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='timesheet_ids']/tree[1]/field[@name='name']" position="after">
+                <field name="time_start" required="1" widget="timesheet_uom"/>
+                <field name="time_stop" required="1" widget="timesheet_uom"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='timesheet_ids']/tree[1]/field[@name='unit_amount']" position="after">
+                <field name="role_id" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                <field name="time_type_id" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='timesheet_ids']/form[1]/sheet[1]/group[1]/field[@name='name']" position="after">
+                <field name="time_start" required="1" widget="timesheet_uom"/>
+                <field name="time_stop" required="1" widget="timesheet_uom"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='timesheet_ids']/form[1]/sheet[1]/group[1]/field[@name='unit_amount']" position="after">
+                <field name="role_id" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" />
+                <field name="time_type_id" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

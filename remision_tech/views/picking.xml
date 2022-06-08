@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_stock_picking_form_inh_remision_tech_botones" model="ir.ui.view">
+            <field name="name">view.stock.picking.form.inh.remision.tech.botones</field>
+            <field name="model">stock.picking</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="remision.view_stock_picking_form_inh_remision_botones"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='cancel_picking_done']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </xpath>
+                <xpath expr="//button[@name='duplicar']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                 <xpath expr="//button[@name='duplicar']" position="after">
+                     <button name="borrar_nro_remision" string="Borrar Nro Remision" type="object"
+                             groups="account.group_account_invoice" class="btn-warning"/>
+                </xpath>
+            </field>
+        </record>
+
+         <record id="view_stock_picking_form_inh_remision_tech" model="ir.ui.view">
+            <field name="name">view.stock.picking.form.inh.remision.tech</field>
+            <field name="model">stock.picking</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="remision.view_stock_picking_form_inh_remision"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page[4]" position="attributes">
+                    <attribute name="attrs">{'invisible':[('picking_type_code','not in',('outgoing','internal') )]}</attribute>
+                </xpath>
+            </field>
+         </record>
+    </data>
+</odoo>

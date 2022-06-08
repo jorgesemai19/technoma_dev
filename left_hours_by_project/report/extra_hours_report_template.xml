@@ -1,0 +1,86 @@
+<odoo>
+    <template id="extra_hours_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="header" >
+                        <link rel="stylesheet" href="/left_hours_by_project/static/src/css/hours_package_report_style.css"/>
+                        <br/>
+                        <div class="col-8 pull-left">
+                            <img t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" width="200" height="60"/>
+                        </div>
+                        <div class="company_data">
+                            <p><span t-field="o.company_id.name"></span></p>
+                            <p><span t-field="o.company_id.street"></span></p>
+                            <p><span t-field="o.company_id.city"></span>-<span t-field="o.company_id.country_id.name"></span></p>
+                            <p><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y %H:%M')"/></p>
+                            <p><span>Pag: </span><span class="page" /> de <span class="topage" /></p>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <br/>
+                        <br/>
+                        <h4><center><strong>Extra Hours Report</strong></center></h4>
+                        <div class="filter" style="text-align:center; font-size:18px; line-height:8px">
+                            <br/>
+                            <p id="titles">Date From: <span t-field="o.date_from"/></p>
+                            <p id="titles">Date To: <span t-field="o.date_to"/></p>
+                        </div>
+                        <br/>
+                        <br/>
+                        <table class="table table-light">
+                            <tbody>
+
+                                <t t-if="o.detailed == True">
+                                    <t t-foreach="o.get_object_lines()" t-as="lines">
+                                        <div style="text-align:center; font-size:18px; line-height:8px">
+                                            <p><center><strong>Employee: </strong><span t-att-style="style" t-esc="lines.name" style="color:white;"/></center></p>
+                                            <p><center><strong>Total extra hours: </strong><span t-att-style="style" style="color:white;" t-esc="'%02d:%02d' % (int(o.get_total_extra_hours(lines, o.date_from, o.date_to)), o.get_total_extra_hours(lines, o.date_from, o.date_to) % 1 * 60)"/></center></p>
+                                        </div>
+                                        <p><center><strong>Detailed Report</strong></center></p>
+                                        <tr>
+                                            <th class="text-left">Date</th>
+                                            <th class="text-left">Partner</th>
+                                            <th class="text-left">Description</th>
+                                            <th class="text-left">Start time</th>
+                                            <th class="text-left">Stop time</th>
+                                            <th class="text-left">Dedicated time</th>
+                                            <th class="text-left">Extra hours</th>
+                                        </tr>
+                                        <t t-foreach="o.get_detail_lines(lines)" t-as="detail_lines">
+                                            <tr>
+                                                <td><span t-att-style="style" t-field="detail_lines.date" style="color:white;" t-field-options='{"format": "dd/MM/yyyy"}'/></td>
+                                                <td><span t-att-style="style" t-esc="detail_lines.partner_id.name" style="color:white;"/></td>
+                                                <td><span t-att-style="style" t-esc="detail_lines.name" style="color:white;"/></td>
+                                                <td><span t-att-style="style" t-esc="'%02d:%02d' % (int(detail_lines.time_start), detail_lines.time_start % 1 * 60)" style="color:white;"/></td>
+                                                <td><span t-att-style="style" t-esc="'%02d:%02d' % (int(detail_lines.time_stop), detail_lines.time_stop % 1 * 60)"/></td>
+                                                <td><span t-att-style="style" t-esc="'%02d:%02d' % (int(detail_lines.unit_amount), detail_lines.unit_amount % 1 * 60)"/></td>
+                                                <td><span t-att-style="style" t-esc="detail_lines.extra_hours" style="color:white;"/></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <h4><center><strong>General Report</strong></center></h4>
+                                    <tr>
+                                        <th class="text-left">User</th>
+                                        <th class="text-left">Total extra hours</th>
+                                    </tr>
+                                    <tr t-foreach="o.get_object_lines()" t-as="lines">
+                                        <td>
+                                            <span t-att-style="style" t-esc="lines.name" style="color:white;"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" style="color:white;" t-esc="'%02d:%02d' % (int(o.get_total_extra_hours(lines, o.date_from, o.date_to)), o.get_total_extra_hours(lines, o.date_from, o.date_to) % 1 * 60)"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

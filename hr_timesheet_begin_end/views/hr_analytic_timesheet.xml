@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_timesheet_line_begin_end_form" model="ir.ui.view">
+        <field name="name">hr.analytic.timesheet.begin.end.form</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="timesheet_grid.timesheet_view_form"/>
+        <field name="mode">extension</field>
+        <field name="arch" type="xml">
+            <field name="task_id" position="after">
+                <field name="name"/>
+<!--                <field name="role_id" required="1" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>-->
+                <field name="time_type_id" required="1" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+            </field>
+            <field name="date" position="before">
+                <field name="partner_id" />
+<!--                <field name="tag_ticket_ids" widget="many2many_tags" options="{'no_create': True, 'no_create_edit':True}"/>-->
+            </field>
+          <field name="unit_amount" position="before">
+              <field required="1" name="time_start" widget="timesheet_uom"/>
+              <field required="1" name="time_stop" widget="timesheet_uom"/>
+          </field>
+        </field>
+    </record>
+    <record id="hr_timesheet_line_begin_end_line" model="ir.ui.view">
+        <field name="name">hr.analytic.timesheet.begin.end.line</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="mode">extension</field>
+        <field name="arch" type="xml">
+              <xpath expr="//tree" position="attributes">
+                <attribute name="editable"/>
+              </xpath>
+            <field name="name" position="before">
+              <field name="partner_move_line"/>
+            </field>
+            <field name="project_id" position="after">
+                <field name="helpdesk_ticket_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--     <record id="view_escala_facturacion_line_tree" model="ir.ui.view">-->
+<!--            <field name="name">crm.escala.facturacion.line.tree</field>-->
+<!--            <field name="model">crm.escala.facturacion</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree string="Escala de Facturacion">-->
+<!--                    <field name="nombre"/>-->
+<!--                    <field name="valor_minimo"/>-->
+<!--                    <field name="valor_maximo"/>-->
+<!--                    <field name="puntos"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+    <record model="ir.ui.view" id="crm_modelo_tipificacion_proyecto_view_form">
+            <field name="name">crm.modelo.tipificacion.proyecto.form.view</field>
+            <field name="model">crm.modelo.tipificacion.proyecto</field>
+            <field name="arch" type="xml">
+                <form string="Modelo Tipificacion">
+                <sheet>
+                    <group>
+                        <field name="nombre" required="True"/>
+                        <field name="rentabilidad_anual" required="True"/>
+                        <field name="codigo_rentabilidad_proporcional" required="True"/>
+                        <field name="formula" required="True" help="Expresion aritmetica a utilizar para calcular los
+                        puntos del proyecto.Usar los codigos de variables para referirse a los valores a utilizar por
+                        cada una de ella"/>
+                    </group>
+                    <notebook>
+                        <page string="Facturacion">
+                            <group>
+                                <field name="codigo_facturacion"/>
+                            </group>
+                            <field name="escalas_facturacion">
+                                <tree string="Facturacion" editable="bottom">
+                                    <field name="nombre"/>
+                                    <field name="valor_minimo"/>
+                                    <field name="valor_maximo"/>
+                                    <field name="puntos"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Rentabilidad">
+                            <group>
+                                <field name="codigo_rentabilidad"/>
+                            </group>
+                            <field name="escalas_rentabilidad">
+                                <tree string="Rentabilidad" editable="bottom">
+                                    <field name="nombre"/>
+                                    <field name="valor_minimo"/>
+                                    <field name="valor_maximo"/>
+                                    <field name="puntos"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Complejidad">
+                            <group>
+                                <field name="codigo_complejidad"/>
+                            </group>
+                            <field name="escalas_complejidad">
+                                <tree string="Complejidad" editable="bottom">
+                                    <field name="nombre"/>
+                                    <field name="puntos"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Estrategico">
+                            <group>
+                                <field name="codigo_estrategico"/>
+                            </group>
+                            <field name="escalas_estrategico">
+                                <tree string="Estrategico" editable="bottom">
+                                    <field name="nombre"/>
+                                    <field name="puntos"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Tipos de Proyecto">
+                            <field name="escalas_tipo_proyecto">
+                                <tree string="Tipos de Proyecto" editable="bottom">
+                                    <field name="nombre"/>
+                                    <field name="valor_minimo"/>
+                                    <field name="valor_maximo"/>
+                                    <field name="puntos"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="crm_modelo_tipificacion_proyecto_view_tree">
+            <field name="name">crm.modelo.tipificacion.proyecto.tree</field>
+            <field name="model">crm.modelo.tipificacion.proyecto</field>
+            <field name="arch" type="xml">
+                <tree string="Tipificacion de Proyectos">
+                    <field name="nombre"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="crm_modelo_tipificacion_proyecto_action" model="ir.actions.act_window">
+            <field name="name">Tipificacion Proyecto</field>
+            <field name="res_model">crm.modelo.tipificacion.proyecto</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('crm_modelo_tipificacion_proyecto_view_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('crm_modelo_tipificacion_proyecto_view_form')}),
+                          ]"/>
+        </record>
+
+        <menuitem
+            id="crm_modelo_tipificacion_proyecto_menu"
+            name="Tipificacion Proyecto"
+            parent="crm.crm_menu_config"
+            action="crm_modelo_tipificacion_proyecto_action"
+            sequence="2"/>
+</odoo>
+
+

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Opportunities by user and team pivot View -->
+    <record id="crm_opportunity_report_view_pivot" model="ir.ui.view">
+        <field name="name">crm.opportunity.report.pivot</field>
+        <field name="model">crm.product.report</field>
+        <field name="priority">60</field>
+        <field name="arch" type="xml">
+            <pivot string="Pipeline Analisis">
+                <field name="stage_id" type="col"/>
+                <field name="category_id" type="row"/>
+                <field name="margen" type="measure"/>
+                <field name="planned_revenue" type="measure"/>
+                <field name="costo_total" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Opportunities by user and team Graph View -->
+    <record id="crm_opportunity_report_view_graph" model="ir.ui.view">
+        <field name="name">crm.opportunity.report.graph</field>
+        <field name="model">crm.product.report</field>
+        <field name="arch" type="xml">
+            <graph string="Pipeline Analisis" stacked="True">
+                <field name="category_id" type="row"/>
+                <field name="proveedor_id" type="row"/>
+                <field name="margen" type="measure"/>
+                <field name="expected_revenue" type="measure"/>
+                 <field name="costo_unitario" type="measure"/>
+                <field name="costo_total" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Opportunities by user and team Tree View -->
+    <record id="crm_opportunity_report_view_tree" model="ir.ui.view">
+        <field name="name">crm.opportunity.report.list</field>
+        <field name="model">crm.product.report</field>
+        <field name="arch" type="xml">
+            <tree string="Pipeline Analisis" edit="0" editable="bottom">
+                <field name="create_date"/>
+                <field name="lead_id" context = "{'form_view_ref': 'crm.crm_case_form_view_oppor'}"/>
+                <field name="partner_name"/>
+                <field name="product_qty"/>
+                <field name="category_id"  options="{'no_open': True}"/>
+                <field name="margen"/>
+                <field name="costo_unitario"/>
+                <field name="costo_total"/>
+                <field name="proveedor_id"/>
+                <field name="stage_id"  options="{'no_open': True}"/>
+                <field name="probability"/>
+                <field name="expected_revenue"/>
+                <field name="user_id"  options="{'no_open': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Opportunities by user and team Search View -->
+    <record id="crm_opportunity_report_view_search" model="ir.ui.view">
+        <field name="name">crm.lead.search</field>
+        <field name="model">crm.product.report</field>
+        <field name="priority">32</field>
+        <field name="arch" type="xml">
+            <search string="Analisis de Oportunidades">
+                <filter string="Mis Oportunidades" name="my"
+                        domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter name="lead" string="Iniciativa" domain="[('type','=', 'lead')]" help="Show only lead"/>
+                <filter name="opportunity" string="Oportunidad" domain="[('type','=','opportunity')]" help="Show only opportunity"/>
+                <separator/>
+                <filter string="Abierto" name="open"
+                        domain="['&amp;',('probability', '!=', 100), ('active', '=', True)]"/>
+                <filter string="Ganado" name="won"
+                        domain="[('probability', '=', 100)]"/>
+                <filter string="Perdido" name="lost"
+                        domain="[('probability', '=', 0), ('active', '=', False)]"/>
+                <field name="team_id" context="{'invisible_team': False}"/>
+                <field name="user_id" string="Comercial"/>
+                <separator/>
+                <filter string="Fecha de Creacion" name="filter_create_date" date="create_date"/>
+                <filter string="Cierre previsto" name="filter_date_deadline" date="date_deadline"/>
+                <filter string="Fecha de Cierre" name="date_closed_filter" date="date_closed"/>
+                <group expand="0" string="Extended Filters">
+                    <field name="partner_id" filter_domain="[('partner_id','child_of',self)]"/>
+                    <field name="stage_id" widget="selection" domain="['|', ('team_id', '=', False), ('team_id', '=', 'team_id')]"/>
+                    <field name="campaign_id" widget="selection"/>
+                    <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                    <newline/>
+                    <field name="create_date"/>
+                    <field name="date_open"/>
+                    <field name="date_closed"/>
+                </group>
+                <group expand="1" string="Group By">
+                    <filter string="Categoria" name="category_id" context="{'group_by':'category_id'}" />
+                    <filter string="Proveedor" name="proveedor_id" context="{'group_by':'proveedor_id'}" />
+                    <filter string="Moneda" name="moneda_id" context="{'group_by':'moneda_id'}" />
+                    <filter string="Comercial" name="salesperson" context="{'group_by':'user_id'}" />
+                    <filter string="Equipo de Ventas" name="saleschannel" context="{'group_by':'team_id'}"/>
+                    <filter string="Pais" name="country" context="{'group_by':'country_id'}" />
+                    <filter string="Compañia" name="company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    <filter string="Etapa" name="stage" context="{'group_by':'stage_id'}"/>
+                    <separator orientation="vertical" />
+                    <filter string="Fecha de Creacion" context="{'group_by':'create_date:month'}" name="month"/>
+                    <filter string="Fecha de Conversion" context="{'group_by':'date_conversion:month'}" name="conversion_date" help="Conversion Date from Lead to Opportunity"/>
+                    <filter string="Cierre previsto" context="{'group_by':'date_deadline:month'}" name="date_deadline"/>
+                    <filter string="Fecha de Cierre" context="{'group_by':'date_closed'}" name="date_closed_groupby"/>
+                    <filter string="Motivo de perdida" name="lostreason" context="{'group_by':'lost_reason'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="crm_product_report_action" model="ir.actions.act_window">
+        <field name="name">Pipeline Analisis por producto</field>
+        <field name="res_model">crm.product.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">pivot,tree,graph,form</field>
+        <field name="search_view_id" ref="crm_opportunity_report_view_search"/>
+        <field name="context">{'search_default_opportunity': True, 'search_default_current': True}</field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                      (0, 0, {'view_mode': 'pivot', 'view_id': ref('crm_opportunity_report_view_pivot')}),
+                      (0, 0, {'view_mode': 'tree', 'view_id': ref('crm_opportunity_report_view_tree')}),
+                      (0, 0, {'view_mode': 'graph', 'view_id': ref('crm_opportunity_report_view_graph')})
+                      ]"/>
+         <field name="help">Pipeline Analysis gives you an instant access to
+your opportunities with information such as the expected revenue, planned cost,
+missed deadlines or the number of interactions per opportunity. This report is
+mainly used by the sales manager in order to do the periodic review with the
+teams of the sales pipeline.</field>
+    </record>
+
+    <menuitem
+        id="crm_product_report_menu"
+        name="Pipeline por Producto"
+        parent="crm.crm_menu_report"
+        action="crm_product_report_action"
+        sequence="2"/>
+
+</odoo>

@@ -1,0 +1,14 @@
+<odoo>
+    <data noupdate="0">
+      <record id="sequence_account_cobros_recibo" model="ir.sequence">
+         <field name="name">Numero Recibo</field>
+         <field name="code">account.cobros.recibo</field>
+         <field name="active">TRUE</field>
+      <!--   <field name="prefix">SS</field>-->
+         <field name="padding">4</field>
+         <field name="number_next">8500</field>
+         <field name="number_increment">1</field>
+         <field name="implementation">no_gap</field>
+      </record>
+    </data>
+</odoo>

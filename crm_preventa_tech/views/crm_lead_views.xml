@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <record id="crm_case_form_view_oppor_preventa" model="ir.ui.view">
+        <field name="name">crm.lead.form.oppor.preventa</field>
+        <field name="model">crm.lead</field>
+        <field name="priority">20</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+            <button name="toggle_active" position="after">
+                <button name="assign_preventa_to_self" string="Asignarme Preventa" type="object" class="oe_highlight"/>
+            </button>
+            <page name="lead" position="after">
+                <page name="preventas" string="Preventas">
+                    <field name="lead_line_preventa_ids"  options="{'no_create_edit': True, 'no_create': True}"/>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

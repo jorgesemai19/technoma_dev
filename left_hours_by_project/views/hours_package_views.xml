@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hours_package_view_action" model="ir.actions.act_window">
+            <field name="name">Hours package</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hours.package</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">
+                {'sidebar_without_id':True}
+            </field>
+        </record>
+
+        <record id="hours_package_type_view_action" model="ir.actions.act_window">
+            <field name="name">Hours package type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hours.package.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">
+                {'sidebar_without_id':True}
+            </field>
+        </record>
+        <record id="hours_activity_type_view_action" model="ir.actions.act_window">
+            <field name="name">Activity type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.analytic.activity.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">
+                {'sidebar_without_id':True}
+            </field>
+        </record>
+
+        <record id="hours_package_view_tree" model="ir.ui.view">
+            <field name="name">Hours package list</field>
+            <field name="model">hours.package</field>
+            <field name="arch" type="xml">
+                <tree string="hours package list">
+                    <field name="name"/>
+                    <field name="partner_id" force_save="1"/>
+                    <field name="company_id" force_save="1"/>
+                    <field name="hours_from_budget"/>
+                    <field name="hours_used" groups="left_hours_by_project.package_hours_manager_group"/>
+                    <field name="available_hours" groups="left_hours_by_project.package_hours_manager_group"/>
+                    <field name="package_type_ids" widget="many2many_tags"/>
+                    <field name="integer_hours"/>
+                    <field name="state"/>
+                    <field name="approval_date"/>
+                    <field name="active" invisible="1"/>
+                    <field name="crm_id" invisible='1' />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hours_package_view_form" model="ir.ui.view">
+            <field name="name">hours_package_view_form</field>
+            <field name="model">hours.package</field>
+            <field name="arch" type="xml">
+                <form string="hours_package_form" class="oe_invoice_form">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                        <button name="get_hours_used_and_available" type="object" string="Refresh available hours" class="oe_highlight" groups="left_hours_by_project.package_hours_manager_group"/>
+                    </header>
+                    <sheet>
+                        <group string="Description">
+                            <field name="name"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <group string="Data">
+                                <field name="partner_id" invisible="0" readonly='1' force_save="1"/>
+                                <field name="approval_date" invisible="0" readonly='1' force_save="1"/>
+                                <field name="company_id" invisible="1" readonly='1' force_save="1"/>
+                                <field name="package_type_ids" widget="many2many_tags"/>
+                                <field name="hours_from_budget" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
+                                <field name="crm_id"/>
+                                <field name="integer_hours"/>
+                            </group>
+                            <group string="Calculated Fields" groups="left_hours_by_project.package_hours_manager_group">
+                                <field name="hours_used" invisible="0" readonly="1" widget="float_time"/>
+                                <field name="available_hours" invisible="0" readonly="1" widget="float_time"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="timesheet lines">
+                                <field name="analytic_line_ids" readonly="1" force_save="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="package_hours_search_view" model="ir.ui.view">
+            <field name="name">package.hours.search.view</field>
+            <field name="model">hours.package</field>
+            <field name="arch" type="xml">
+                <search string="Search View">
+                    <field name="name" string="Description" domain="[('name', 'ilike', name)]"/>
+                    <field name="partner_id" domain="[('partner_id','ilike', self)]" operator="child_of"/>
+                    <separator/>
+                    <filter name="state" domain="[('state','=','draft')]" string="Draft"/>
+                    <filter name="state" domain="[('state','=','cancel')]" string="Cancel"/>
+                    <filter name="state" domain="[('state','=','approved')]" string="Approved"/>
+                    <filter name="state" domain="[('state','=','consumed')]" string="Consumed"/>
+                    <separator/>
+                    <group expand="0" name="group_by" string="Group By">
+                       <filter name="group_partner_id" string="Company" context="{'group_by': 'partner_id'}"/>
+                   </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

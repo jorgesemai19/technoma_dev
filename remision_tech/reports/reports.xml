@@ -1,0 +1,121 @@
+<odoo>
+    <data>
+
+
+        <record id="paperformat_remision_technoma" model="report.paperformat">
+            <field name="name">A4</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">300</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+                            <!--Remision-->
+        <report
+                id="remision_report_technoma"
+                model="stock.picking"
+                string="Remision Technoma"
+                report_type="qweb-pdf"
+                name="remision_tech.report_remision_technoma"
+                file="remision_tech.report_remision_technoma"
+                paperformat="paperformat_remision_technoma"
+                print_report_name="'Nota de Remision %s' % (object.numero_remision)"
+        />
+
+<!--        &lt;!&ndash;NOTA DE CREDITO&ndash;&gt;-->
+<!--        <record id="paperformat_notacredito_bpuntoc" model="report.paperformat">-->
+<!--            <field name="name">A4</field>-->
+<!--            <field name="default" eval="True"/>-->
+<!--            <field name="format">custom</field>-->
+<!--            <field name="page_height">300</field>-->
+<!--            <field name="page_width">210</field>-->
+<!--            <field name="orientation">Portrait</field>-->
+<!--            <field name="margin_top">0</field>-->
+<!--            <field name="margin_bottom">0</field>-->
+<!--            <field name="margin_left">0</field>-->
+<!--            <field name="margin_right">0</field>-->
+<!--            <field name="header_line" eval="False"/>-->
+<!--            <field name="header_spacing">20</field>-->
+<!--            <field name="dpi">90</field>-->
+<!--        </record>-->
+
+<!--                            &lt;!&ndash;Factura&ndash;&gt;-->
+<!--        <report-->
+<!--                id="notacredito_report_bpuntoc"-->
+<!--                model="account.invoice"-->
+<!--                string="Nota Credito"-->
+<!--                report_type="qweb-pdf"-->
+<!--                name="factura.report_notaCredito_bpunto"-->
+<!--                file="factura.report_notaCredito_bpunto"-->
+<!--                paperformat="paperformat_notacredito_bpuntoc"-->
+<!--                print_report_name="'NotaCredito - %s' % (object.nro_factura)"-->
+<!--        />-->
+
+<!--         &lt;!&ndash; Hoja cheque&ndash;&gt;-->
+<!--        <record id="paperformat_cheque" model="report.paperformat">-->
+<!--        <field name="name">cheque</field>-->
+<!--        <field name="default" eval="True"/>-->
+<!--        <field name="format">custom</field>-->
+<!--&lt;!&ndash;        <field name="page_height">77</field>&ndash;&gt;-->
+<!--        <field name="page_height">240</field>-->
+<!--&lt;!&ndash;        <field name="page_width">300</field>&ndash;&gt;-->
+<!--        <field name="page_width">76</field>-->
+<!--        <field name="orientation">Portrait</field>-->
+<!--        <field name="margin_top">0</field>-->
+<!--        <field name="margin_bottom">0</field>-->
+<!--        <field name="margin_left">0</field>-->
+<!--        <field name="margin_right">0</field>-->
+<!--        <field name="header_line" eval="False"/>-->
+<!--        <field name="header_spacing">0</field>-->
+<!--        <field name="dpi">90</field>-->
+<!--    </record>-->
+
+<!--        &lt;!&ndash;CHEQUE&ndash;&gt;-->
+<!--        <report-->
+<!--            id="report_cheques"-->
+<!--            model="account.check"-->
+<!--            string="Cheques"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="factura.cheque_report"-->
+<!--            file="factura.cheque_report"-->
+<!--            paperformat="paperformat_cheque"-->
+<!--        />-->
+
+<!--         &lt;!&ndash; Hoja cheque OTROS&ndash;&gt;-->
+<!--        <record id="paperformat_cheque_otro" model="report.paperformat">-->
+<!--        <field name="name">cheque formato</field>-->
+<!--        <field name="default" eval="True"/>-->
+<!--        <field name="format">custom</field>-->
+<!--        <field name="page_height">187</field>-->
+<!--        <field name="page_width">77</field>-->
+<!--        <field name="orientation">Portrait</field>-->
+<!--        <field name="margin_top">0</field>-->
+<!--        <field name="margin_bottom">0</field>-->
+<!--        <field name="margin_left">0</field>-->
+<!--        <field name="margin_right">0</field>-->
+<!--        <field name="header_line" eval="False"/>-->
+<!--        <field name="header_spacing">0</field>-->
+<!--        <field name="dpi">90</field>-->
+<!--    </record>-->
+
+<!--        <report-->
+<!--            id="report_cheques_otro"-->
+<!--            model="account.check"-->
+<!--            string="Cheques Otros"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="factura.cheque_report_otro"-->
+<!--            file="factura.cheque_report_otro"-->
+<!--            paperformat="paperformat_cheque_otro"-->
+<!--        />-->
+
+
+    </data>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_wizard_update_package_hours" model="ir.ui.view">
+            <field name="name">update.all.package.hours.form</field>
+            <field name="model">update.all.package.hours</field>
+            <field name="arch" type="xml">
+                <form string="Update Records">
+                    <group>
+                         <group>
+                             <p>Do yo want to update this records?</p>
+
+                         </group>
+                    </group>
+                    <footer>
+                        <button string='Yes' name="update_all_package_hours" type="object" class="btn-primary"/>
+                        <button string="No" class="btn-default" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <act_window
+            name="Update Package Hours"
+            res_model="update.all.package.hours"
+            src_model="hours.package"
+            view_mode="form"
+            view_type="form"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            id="action_wizard_update_package_hours"
+            view_id="view_wizard_update_package_hours"
+            groups="left_hours_by_project.package_hours_manager_group"
+         />
+    </data>
+</odoo>

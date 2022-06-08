@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<odoo>
+<!-- Tareas de Proyecto Licitacion vista pivote -->
+    <record id="licitaciones_tech_report_task_view_pivot" model="ir.ui.view">
+        <field name="name">licitaciones_tech.report.pivot</field>
+        <field name="model">project.task</field>
+        <field name="priority">60</field>
+        <field name="arch" type="xml">
+            <pivot string="Analisis de Licitaciones">
+                <field name="stage_id" type="col"/>
+                <field name="name" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Licitaciones por etapa  Graph View -->
+    <record id="licitaciones_tech_report_task_view_graph" model="ir.ui.view">
+        <field name="name">licitaciones_tech.report.graph</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <graph string="Analisis de Licitaciones" stacked="True">
+                <field name="stage_id" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Licitaciones Tree View -->
+    <record id="licitaciones_tech_report_task_view_tree" model="ir.ui.view">
+        <field name="name">licitaciones_tech.report.list</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <tree string="Analisis de Licitaciones" edit="0"  default_order="create_date desc">
+                <field name="create_date"/>
+                <field name="name"/>
+                <field name="project_id" options="{'no_open': True}"/>
+                <field name="user_id" options="{'no_open': True}"/>
+                <field name="stage_id" options="{'no_open': True}"/>
+                <field name="tipo_procedimiento_id" options="{'no_open': True}" />
+                <field name="modalidad_procedimiento_id" options="{'no_open': True}" />
+                <field name="sistema_adjudicacion"/>
+                <field name="monto_llamado"/>
+                <field name="monto_adjudicado"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Licitaciones by user and team Search View -->
+    <record id="licitaciones_tech_report_task_view_search" model="ir.ui.view">
+        <field name="name">licitaciones_tech.search</field>
+        <field name="model">project.task</field>
+        <field name="priority">32</field>
+        <field name="arch" type="xml">
+            <search string="Licitaciones">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="tipo_procedimiento_id"/>
+                <field name="modalidad_procedimiento_id"/>
+                <field name="sistema_adjudicacion"/>
+                <field name="project_id"/>
+                <filter string="Mis Licitaciones" name="my"
+                        domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter name="es_perdido" string="Perdidas" domain="[('es_perdido','=', True)]"
+                        help="Muestra solo las licitaciones perdidas"/>
+                <separator/>
+                <filter string="Creado el" name="creation_date" date="create_date"/>
+                <group expand="1" string="Group By">
+                    <filter string="Proyecto" name="project_id"
+                            context="{'group_by':'project_id'}"/>
+                    <filter string="Tipo de Procedimiento" name="tipo_procedimiento_id"
+                            context="{'group_by':'tipo_procedimiento_id'}"/>
+                    <filter string="Modalidad de Procedimiento" name="modalidad_procedimiento_id"
+                            context="{'group_by':'modalidad_procedimiento_id'}" />
+                    <filter string="Sistema de Adjudicacion" name="sistema_adjudicacion"
+                            context="{'group_by':'sistema_adjudicacion'}"/>
+                    <filter string="Motivo Perdida" name="motivo_perdida_id" context="{'group_by':'motivo_perdida_id'}" />
+                    <filter string="Cliente" name="partner_id" context="{'group_by':'partner_id'}"/>
+                    <filter string="Etapa" name="stage" context="{'group_by':'stage_id'}"/>
+                    <separator orientation="vertical" />
+                    <filter string="Fecha de Creacion" context="{'group_by':'create_date:month'}" name="Mes"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="licitaciones_tech_report_action" model="ir.actions.act_window">
+        <field name="name">Analisis de Licitaciones</field>
+        <field name="res_model">project.task</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,pivot,graph,form</field>
+        <field name="search_view_id" ref="licitaciones_tech_report_task_view_search"/>
+        <field name="domain">[('project_id.tipo_licitacion', '=', True), ('parent_id', '=', False)]</field>
+        <field name="context">{'search_default_es_proyecto_licitacion': True, 'search_default_current': True}</field>
+
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                      (0, 0, {'view_mode': 'tree', 'view_id': ref('licitaciones_tech_report_task_view_tree')}),
+                      (0, 0, {'view_mode': 'pivot', 'view_id': ref('licitaciones_tech_report_task_view_pivot')}),
+                      (0, 0, {'view_mode': 'graph', 'view_id': ref('licitaciones_tech_report_task_view_graph')}),
+                      ]"/>
+    </record>
+
+    <menuitem
+        id="licitaciones_tech_report_menu"
+        name="Licitaciones"
+        parent="project.menu_project_report"
+        action="licitaciones_tech_report_action"
+        sequence="51"/>
+
+</odoo>

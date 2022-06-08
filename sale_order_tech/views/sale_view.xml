@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sale_order_tech_tree">
+            <field name="name">sale.order.tech.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="opportunity_id"/>
+                    <field name="monto_margen" widget="monetary"/>
+                    <field name="porcentaje_margen" string="% Margen"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sale_quotation_tech_tree">
+            <field name="name">sale.quotation.tech.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="opportunity_id"/>
+                    <field name="monto_margen" widget="monetary"/>
+                    <field name="porcentaje_margen" string="% Margen"/>
+                </xpath>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="sale_order_tech_form">
+            <field name="name">sale_order_tech.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="amount_total" position="after">
+                    <field name='monto_margen' widget="monetary" options="{'currency_field': 'currency_id'}"
+                    required="True"/>
+                    <field name="porcentaje_margen" required="True"/>
+                </field>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="linked_po"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sale_currency_tree">
+            <field name="name">sale.inherit.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="company_currency_amount_total"
+                    string="Total Gs" widget="monetary"/>
+                    <field name="company_currency" invisible="1"/>
+                    <field name="currency_usd" invisible="1"/>
+                    <field name="company_currency_amount_untaxed" widget="monetary"
+                           options="{'currency_field': 'company_currency'}"/>
+                    <field name="company_currency_amount_tax" widget="monetary"
+                           options="{'currency_field': 'company_currency'}"/>
+                    <field name="amount_total_usd" options="{'currency_field': 'currency_usd'}"/>
+                    <field name="amount_untaxed_usd" options="{'currency_field': 'currency_usd'}"/>
+                    <field name="amount_tax_usd" options="{'currency_field': 'currency_usd'}"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sale_quotation_currency_tree">
+            <field name="name">sale.inherit.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="company_currency_amount_total"
+                    string="Total Gs"/>
+                    <field name="company_currency" invisible="1"/>
+                    <field name="currency_usd" invisible="1"/>
+                    <field name="company_currency_amount_untaxed" widget="monetary"
+                           options="{'currency_field': 'company_currency'}"/>
+                    <field name="company_currency_amount_tax" widget="monetary"
+                           options="{'currency_field': 'company_currency'}"/>
+                    <field name="currency_usd" invisible="1"/>
+                    <field name="amount_total_usd" options="{'currency_field': 'currency_usd'}"/>
+                    <field name="amount_untaxed_usd" options="{'currency_field': 'currency_usd'}"/>
+                    <field name="amount_tax_usd" options="{'currency_field': 'currency_usd'}"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account_invoice_currency_tree">
+            <field name="name">account.invoice.inherit.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total_signed']" position="after">
+                    <field name="amount_total_company_signed"
+                    string="Company Currency Total"/>
+                </xpath>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="sale_amount_currency_form">
+            <field name="name">sale_amount_current.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="factura.view_sale_order_form_inh"/>
+            <field name="arch" type="xml">
+                <field name="seccion" position="after">
+                    <field name='cotizacion'/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

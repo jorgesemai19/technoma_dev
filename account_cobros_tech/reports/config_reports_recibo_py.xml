@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <report
+            id="action_recibo_report"
+            model="account.recibo"
+            string="Recibo"
+            report_type="qweb-pdf"
+            name="account_cobros_tech.recibo_report"
+            file="account_cobros_tech.recibo_report"
+            print_report_name="'%s' % (object.name)"
+        />
+
+<!--        <report-->
+<!--        id="report_recibo_py"-->
+<!--        model="account.recibo"-->
+<!--        string="Recibo"-->
+<!--        name="account_payment_py.report_recibo_py_view"-->
+<!--        file="account_payment_py.report_recibo_py"-->
+<!--        report_type="qweb-pdf"/>-->
+<!--        print_report_name="'%s' % (object.name)"-->
+    </data>
+</odoo>

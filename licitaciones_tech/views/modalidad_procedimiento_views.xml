@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="action_modalidad_procedimiento" model="ir.actions.act_window">
+        <field name="name">Modalidad Procedimiento Licitacion</field>
+        <field name="res_model">licitaciones_tech.modalidad.procedimiento</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_modalidad_procedimiento"
+              name="Modalidad Procedimiento Licitacion"
+              action="action_modalidad_procedimiento"
+              sequence="14"
+              parent="project.menu_project_config" />
+
+
+    <record id="view_modalidad_procedimiento_form" model="ir.ui.view">
+    <field name="name">Modalidad Procedimiento Licitacion</field>
+    <field name="model">licitaciones_tech.modalidad.procedimiento</field>
+    <field name="arch" type="xml">
+      <form>
+          <sheet>
+               <group>
+                    <field name="nombre" required="True"/>
+               </group>
+          </sheet>
+
+      </form>
+    </field>
+  </record>
+
+  <record id="view_modalidad_procedimiento_tree" model="ir.ui.view">
+    <field name="name">Modalidad Procedimiento Licitacion</field>
+    <field name="model">licitaciones_tech.modalidad.procedimiento</field>
+    <field name="arch" type="xml">
+      <tree>
+          <field name="nombre" />
+      </tree>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,69 @@
+<odoo>
+    <template id="hours_package_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="header" >
+                      <link rel="stylesheet" href="/left_hours_by_project/static/src/css/hours_package_report_style.css"/>
+                        <br/>
+                      <div class="col-8 pull-left">
+                          <img t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" width="200" height="60"/>
+                      </div>
+                      <div class="company_data">
+                          <p><span t-field="o.company_id.name"></span></p>
+                          <p><span t-field="o.company_id.street"></span></p>
+                          <p><span t-field="o.company_id.city"></span>-<span t-field="o.company_id.country_id.name"></span></p>
+                          <p><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y %H:%M')"/></p>
+                          <p><span>Pag: </span><span class="page" /> de <span class="topage" /></p>
+                      </div>
+                  </div>
+                  <div class="page">
+                      <br/>
+                      <br/>
+                      <h4><center><stong>Hours Package Report</stong></center></h4>
+                      <div class="filter" style="text-align:center; font-size:18px; line-height:8px">
+                          <br/>
+                          <br/>
+                            <p id="titles">User: <span t-field="user.name"/></p>
+                            <p id="titles">Partner: <span t-field="o.partner_id"/></p>
+                            <p id="titles">State: <span t-field="o.state"/></p>
+                            <p id="titles">Date From: <span t-field="o.date_from"/></p>
+                            <p id="titles">Date To: <span t-field="o.date_to"/></p>
+                        </div>
+                      <br/>
+                      <table class="table table-condensed">
+                          <thead>
+                              <tr>
+                                  <th>Package Name</th>
+                                  <th class="text-right">Partner</th>
+                                  <th class="text-right">Hours from budget</th>
+                                  <th class="text-right">Hours used</th>
+                                  <th class="text-right">Hours Available</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr t-foreach="o.get_updated_and_filter_object()" t-as="package">
+                                  <td>
+                                      <span t-att-style="style" t-esc="package['name']" style="color:white;"/>
+                                  </td>
+                                  <td class="text-right">
+                                      <span t-att-style="style" t-if="package['partner_id']" t-esc="package['partner_id'].name"/>
+                                  </td>
+                                  <td class="text-right">
+                                      <span t-att-style="style" t-esc="'%02d:%02d' % (int(package.hours_from_budget), package.hours_from_budget % 1 * 60)"/>
+                                  </td>
+                                  <td class="text-right">
+                                      <span t-att-style="style" t-esc="'%02d:%02d' % (int(package.hours_used), package.hours_used % 1 * 60)"/>
+                                  </td>
+                                  <td class="text-right">
+                                      <span t-att-style="style" t-esc="'%02d:%02d' % (int(package.available_hours), package.available_hours % 1 * 60)"/>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

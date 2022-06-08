@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_remision_technoma">
+        <t t-call="web.html_container">
+              <t t-foreach="docs" t-as="o">
+                  <span t-call="web.basic_layout">
+                      <link rel="stylesheet" href="/remision_tech/static/src/css/estilos.css"/>
+                        <body>
+                            <span id="id_fecha_emision"><span t-field="o.scheduled_date" t-options="{'format': 'dd/MM/yyyy'}"/></span>
+                            <t t-set="nombre_cliente" t-value="o.partner_id.name"/>
+                            <p id="id_nombre_razon_social"><span t-esc="nombre_cliente[:51]"/></p>
+<!--                            <p id="id_nombre_razon_social"><span t-esc="o.partner_id.name[:51]"/></p>-->
+                            <t t-if="o.partner_id.ruc">
+                                <span id="id_ruc_cliente" t-esc="o.partner_id.ruc + '-' + o.partner_id.dv"/>
+                            </t>
+                            <t t-else="">
+                                <p id="id_ruc_cliente"><span>'                '</span></p>
+                            </t>
+                            <t t-if="o.partner_id.street">
+                                <p id="id_direccion"><span t-esc="o._default_direccion_llegada()"/></p>
+                            </t>
+                            <t t-else="">
+                                <p id="id_direccion"><span>'                                                                         '</span></p>
+                            </t>
+
+                            <!--Datos de traslado-->
+                             <t t-if="o.motivo_translado">
+                                    <p id="id_motivo_translado"><span t-field="o.motivo_translado"/></p>
+                             </t>
+                            <t t-else="">
+                                  <p id="id_motivo_translado"><span>'                        '</span></p>
+                            </t>
+                            <t t-if="o.get_nro_factura()">
+                                <span id="id_comprobante_venta">Factura</span>
+                                <p id="id_nro_factura"><span t-esc="o.get_nro_factura()"/></p>
+                                <span id="id_nro_timbrado" t-esc="o.get_nro_timbrado()"/>
+                                <p id="id_fecha_factura"><span t-esc="o.get_fecha_expedicion_factura()"/></p>
+                             </t>
+                            <t t-else="">
+                                <span id="id_comprobante_venta">'                '</span>
+                                <p><span id="id_nro_factura">'                   '</span></p>
+                                <span id="id_nro_timbrado">'                     '</span>
+                                <p id="id_fecha_factura"><span>'              '</span></p>
+                            </t>
+                             <p id="id_fecha_inicio_traslado"><span t-field="o.fecha_inicio_traslado" t-options="{'format': 'dd/MM/yyyy'}"></span></p>
+                             <span id="id_fecha_fin_traslado" t-field="o.fecha_fin_traslado" t-options="{'format': 'dd/MM/yyyy'}"></span>
+                             <p id="id_direccion_salida"><span t-field="o.direccion_salida"></span></p>
+                             <p id="id_ciudad_salida"><span t-field="o.ciudad_salida"></span></p>
+                             <span id="id_departamento_salida" t-field="o.departamento_salida"></span>
+                            <p id="id_direccion_llegada"><span t-field="o.direccion_llegada"></span></p>
+                             <p id="id_ciudad_llegada"><span t-field="o.ciudad_llegada"></span></p>
+                             <span id="id_departamento_llegada" t-field="o.departamento_llegada"></span>
+                             <p id="id_km_recorrido"><span t-field="o.km_recorrido"></span></p>
+                            <p id="id_cambio_fecha"><span t-field="o.cambio_fecha_traslado"></span></p>
+                             <p id="id_motivo_cambio"><span t-field="o.motivo_cambio"></span></p>
+                            <br/>
+                            <p id="id_marca"><span t-field="o.vehiculo_id.model_id"></span></p>
+                            <p id="id_rua"><span t-field="o.vehiculo_id.license_plate"></span></p>
+                            <p id="id_nombre_chofer"><span t-field="o.chofer_id.name"></span></p>
+                            <span id="id_ci_chofer" t-field="o.chofer_id.ci"></span>
+                            <table class="tabla_productos">
+                                    <thead>
+                                        <th id="cabecera_cantidad"></th>
+                                        <th id="cabecera_espacio_descripcion"></th>
+                                        <th id="cabecera_descripcion"></th>
+                                    </thead>
+                                    <tbody class="tabla_cuerpo-1">
+                                        <t t-foreach="o.move_line_ids" t-as="p">
+                                        <tr>
+                                             <t t-set="lote" t-value="str(p.lot_id.name) if p.lot_id else ''"/>
+
+                                            <!--Cantidad original-->
+                                                    <td id="id_cantidad"><span t-esc="'%.1f'%(p.qty_done)"></span></td>
+                                            <!--Descripcion original-->
+                                                 <t  t-if="p.product_id.description_sale">
+                                                    <td id="id_descripcion"><span  t-esc="p.product_id.description_sale + ' ' + lote"></span></td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td id="id_descripcion"><span  t-esc="p.product_id.name + ' ' + lote"></span></td>
+                                                </t>
+                                        </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                        </body>
+                  </span>
+              </t>
+        </t>
+    </template>
+</odoo>

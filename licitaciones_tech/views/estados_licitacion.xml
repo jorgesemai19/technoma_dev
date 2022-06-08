@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="action_estado_licitacion_adjudicada" model="ir.actions.act_window">
+        <field name="name">Estados Licitacion Adjudicada</field>
+        <field name="res_model">licitaciones_tech.estado_licitacion_adjudicada</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_estado_licitacion_adjudicada"
+              name="Estados Licitacion Adjudicada"
+              action="action_estado_licitacion_adjudicada"
+              parent="project.menu_project_config" />
+
+     <record id="action_estado_licitacion_ejecucion"  model="ir.actions.act_window">
+         <field name="name">Estados Licitacion Ejecucion</field>
+         <field name="res_model">licitaciones_tech.estado_licitacion_ejecucion</field>
+         <field name="view_mode">tree,form</field>
+     </record>
+
+    <menuitem id="menu_estado_licitacion_ejecucion"
+      name="Estados Licitacion Ejecucion"
+      action="action_estado_licitacion_ejecucion"
+      parent="project.menu_project_config" />
+
+    <record id="view_estado_licitacion_adjudicada_form" model="ir.ui.view">
+    <field name="name">Estado Licitacion Adjudicada</field>
+    <field name="model">licitaciones_tech.estado_licitacion_adjudicada</field>
+    <field name="arch" type="xml">
+      <form>
+          <sheet>
+               <group>
+                    <field name="nombre" required="True"/>
+               </group>
+          </sheet>
+
+      </form>
+    </field>
+  </record>
+
+  <record id="view_estado_licitacion_adjudicada_tree" model="ir.ui.view">
+    <field name="name">Estados Licitacion Adjudicada</field>
+    <field name="model">licitaciones_tech.estado_licitacion_adjudicada</field>
+    <field name="arch" type="xml">
+      <tree>
+          <field name="nombre" />
+      </tree>
+    </field>
+  </record>
+
+     <record id="view_estado_licitacion_ejecucion_form" model="ir.ui.view">
+    <field name="name">Estado Licitacion en Ejecucion</field>
+    <field name="model">licitaciones_tech.estado_licitacion_ejecucion</field>
+    <field name="arch" type="xml">
+      <form>
+          <sheet>
+            <group>
+                <field name="nombre" required="True"/>
+            </group>
+          </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_estado_licitacion_ejecucion_tree" model="ir.ui.view">
+    <field name="name">Estados Licitacion en Ejecucion</field>
+    <field name="model">licitaciones_tech.estado_licitacion_ejecucion</field>
+    <field name="arch" type="xml">
+      <tree>
+          <field name="nombre"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

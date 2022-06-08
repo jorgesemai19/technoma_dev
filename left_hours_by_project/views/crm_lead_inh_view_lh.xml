@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="crm_lead_lh_form_inherit" model="ir.ui.view">
+            <field name="name">left.hours.bp.crm_lead_lh.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="hours_package"/>
+                </xpath>
+                <xpath expr="//page[@name='lead']" position="after">
+                    <page string="Hours Package" attrs="{'invisible':[('hours_package', '=', False)]}">
+                        <field name="hours_package_ids" context="{'default_partner_id': partner_id, 'default_crm_id': active_id}" mode="tree,kanban"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
