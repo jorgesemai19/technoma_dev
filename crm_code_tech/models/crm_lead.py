@@ -25,14 +25,12 @@ class CrmLead(models.Model):
                 vals['code'] = self.env['ir.sequence'].next_by_code('crm.lead')
         return super(CrmLead, self).create(vals_list)
 
-    @api.multi
     def copy(self, default=None):
         if default is None:
             default = {}
         default['code'] = self.env['ir.sequence'].next_by_code('crm.lead')
         return super(CrmLead, self).copy(default)
 
-    @api.multi
     def name_get(self):
         res = []
         for rec in self:
