@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <!-- Inherit Form View to Modify it -->
+    <record id="cmr_lead_form_view_customization_technoma" model="ir.ui.view">
+        <field name="name">cmr.lead.form.view.customization.technoma</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="presale.crm_lead_view_presale_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='generate_presale_project']" position="after">
+                <button name="action_assign_presale" string="ASSIGN ME THIS PRESALE" type="object" style="background-color: #29897E; color: white"/>
+            </xpath>
+            <xpath expr="//field[@name='requiere_preventa']" position="after">
+                <!-- Add your fields or attributes here -->
+              <field name="presales_id" attrs="{'invisible': [('requiere_preventa', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- Inherit Form View to Modify it -->
+<!--    <record id="crm_lead_view_inh_custom_technoma" model="ir.ui.view">-->
+<!--        <field name="name">crm.lead.view.inh.custom.technoma</field>-->
+<!--        <field name="model">crm.lead</field>-->
+<!--        <field name="inherit_id" ref="crm.crm_lead_view_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//header" position="inside">-->
+<!--                <div attrs="{'invisible':[('requiere_preventa','=',False)]}">-->
+<!--                    <button name="action_assign_presale" string="ASSIGN ME THIS PRESALE" type="object" style="background-color: #29897E; color: white"/>-->
+<!--                </div>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+  </data>
+</odoo>
