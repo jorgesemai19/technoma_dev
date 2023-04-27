@@ -10,7 +10,7 @@
             <field name="task_id" position="after">
                 <field name="name"/>
 <!--                <field name="role_id" required="1" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>-->
-                <field name="time_type_id" required="1" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+<!--                <field name="time_type_id" required="1" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>-->
             </field>
             <field name="date" position="before">
                 <field name="partner_id" />
@@ -31,9 +31,9 @@
               <xpath expr="//tree" position="attributes">
                 <attribute name="editable"/>
               </xpath>
-            <field name="name" position="before">
-              <field name="partner_move_line"/>
-            </field>
+<!--            <field name="name" position="before">-->
+<!--              <field name="partner_move_line"/>-->
+<!--            </field>-->
             <field name="project_id" position="after">
                 <field name="helpdesk_ticket_id"/>
             </field>

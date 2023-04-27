@@ -20,13 +20,16 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'helpdesk_timesheet', 'account'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        # 'views/views.xml',
+        # 'views/templates.xml',
+        'views/helpdesk_timesheet.xml',
+        'views/hr_analytic_timesheet.xml',
+        'views/project_task_timesheet.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

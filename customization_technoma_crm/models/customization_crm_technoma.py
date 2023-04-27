@@ -6,11 +6,13 @@ from odoo.exceptions import ValidationError
 class CustomizationCrm(models.Model):
     _inherit = 'crm.lead'
 
-    presales_id = fields.Many2one(
-        comodel_name='res.users',
-        string='Presales',
-        required=False)
+    employee_ids = fields.Many2many(
+        comodel_name='hr.employee',
+        string='Preventas')
 
     def action_assign_presale(self):
-        self.ensure_one()
-        self.presales_id = self.env.user
+        for rec in self:
+            employees = rec.employee_ids.ids
+            if rec.env.user.employee_id not in rec.employee_ids.ids:
+                employees.append(rec.env.user.employee_id.id)
+                rec.employee_ids = rec.env['hr.employee'].browse(employees)
