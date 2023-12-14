@@ -15,7 +15,6 @@ class SaleOrder(models.Model):
         string='Linked purchase order',
         required=False)
 
-    @api.multi
     def _action_confirm(self):
         result = super(SaleOrder, self)._action_confirm()
         po = self.env['purchase.order'].search([('origin', '=like', self.name)])
