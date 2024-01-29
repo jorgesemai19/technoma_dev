@@ -6,9 +6,9 @@
         <field name="model">crm.lead</field>
         <field name="inherit_id" ref="presale.crm_lead_view_presale_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='generate_presale_project']" position="after">
-                <button name="action_assign_presale" string="ASIGNARME ESTA PREVENTA" type="object" style="background-color: #29897E; color: white"/>
-            </xpath>
+<!--            <xpath expr="//button[@name='generate_presale_project']" position="after">-->
+<!--                <button name="action_assign_presale" string="ASIGNARME ESTA PREVENTA" type="object" style="background-color: #29897E; color: white"/>-->
+<!--            </xpath>-->
             <page name="lead" position="after">
                 <page name="preventas" string="Preventas" attrs="{'invisible':[('requiere_preventa','=',False)]}">
                     <field name="employee_ids"  options="{'no_create_edit': True, 'no_create': True}" widget="many2many_tags"/>
