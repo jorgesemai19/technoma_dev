@@ -24,12 +24,16 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         # 'views/views.xml',
         # 'views/templates.xml',
         'views/helpdesk_timesheet.xml',
         'views/hr_analytic_timesheet.xml',
         'views/project_task_timesheet.xml',
+        'views/account_analytic_line_inh_view_technoma.xml',
+        'views/account_analytic_line_report_wizard_view.xml',
+        'report/reports.xml',
+        'report/overtime_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

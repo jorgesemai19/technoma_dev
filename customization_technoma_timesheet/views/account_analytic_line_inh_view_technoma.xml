@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_analytic_inherit_view_tech" model="ir.ui.view">
+        <field name="name">account.analytic.inherit.view.tech</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="timesheet_grid.timesheet_view_form"/>
+        <field name="mode">extension</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='unit_amount']" position="after">
+                <field name="is_used_hours"/>
+                <field name="overtime_hours" widget="float_time" readonly="True"/>
+                <field name="is_holiday"/>
+                <field name="is_saturday"/>
+                <field name="is_sunday"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

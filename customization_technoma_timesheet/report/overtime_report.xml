@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Report template definition -->
+        <template id="report_account_analytic_line">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+<!--                    <t t-foreach="docs" t-as="o">-->
+                        <div class="page">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="text-center">Reporte de Horas Extras</h3>
+                                    <h4 class="text-center">Periodo: <t t-esc="form['date_start']"/> - <t t-esc="form['date_end']"/> </h4>
+                                    <br></br>
+                                </div>
+                            </div>
+                            <!-- Content section -->
+                            <div class="page-content">
+                                <t t-if="form['all_employees']">
+                                    <table style="page-break-after: always;" class="o_list_view table table-condensed table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Empleado</th>
+                                                <th>Saldo de Horas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="processed_employees" t-value="[]"/>
+                                            <t t-set="filtered_employees" t-value="[]"/>
+                                                <t t-foreach="employees" t-as="emp">
+                                                <!-- Definir variables para el empleado -->
+                                                <t t-set="positive" t-value="0"/>
+                                                <t t-set="negative" t-value="0"/>
+                                                <t t-set="value" t-value="0"/>
+
+                                                <!-- Verificar si el empleado ya ha sido procesado -->
+                                                <t t-if="emp['id'] not in processed_employees">
+                                                    <!-- Agregar el empleado al conjunto de empleados procesados -->
+                                                    <t t-set="processed_employees" t-value="processed_employees + [emp['id']]"/>
+
+                                                    <!-- Iterar sobre las horas extras asociadas a este empleado -->
+                                                    <t t-foreach="overtime_hours" t-as="line">
+                                                        <t t-if="emp['id'] == line['employee_id'][0]">
+                                                            <t t-if="line['is_used_hours']">
+                                                                <t t-set="negative" t-value="negative + line['unit_amount']"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <t t-set="positive" t-value="positive + line['overtime_hours']"/>
+                                                            </t>
+                                                        </t>
+                                                    </t>
+                                                    <!-- Calcular el valor final para este empleado -->
+                                                    <t t-set="value" t-value="positive - negative"/>
+
+                                                    <!-- Mostrar el valor en una fila de la tabla -->
+                                                    <t t-if="value &gt; 0">
+                                                        <t t-set="filtered_employees" t-value="filtered_employees + [emp['id']]"/>
+                                                        <tr>
+                                                            <td><t t-esc="emp['name']"/></td>
+                                                            <td><t t-esc="value"/></td>
+                                                        </tr>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                    <t t-foreach="employees" t-as="emp">
+                                        <t t-if="emp['id'] in filtered_employees">
+                                            <h3> Empleado: <t t-esc="emp['name']"/></h3>
+                                            <table style="page-break-after: always;" class="o_list_view table table-condensed table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fecha</th>
+                                                        <th>Cliente</th>
+                                                        <th>Descripción</th>
+                                                        <th>Horas extras</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="overtime_hours" t-as="ov">
+                                                        <t t-if="ov['employee_id'][0] == emp['id']">
+                                                            <tr t-if="ov['is_used_hours']">
+                                                                <td><t t-esc="ov['date']"/></td>
+                                                                <t t-if="ov['partner_id']">
+                                                                    <td><t t-esc="ov['partner_id'][1]"/></td>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <td>None</td>
+                                                                </t>
+                                                                <td><t t-esc="ov['name']"/></td>
+                                                                <td>-<t t-esc="ov['unit_amount']"/></td>
+                                                            </tr>
+                                                            <tr t-else="">
+                                                                <td><t t-esc="ov['date']"/></td>
+                                                                <t t-if="ov['partner_id']">
+                                                                    <td><t t-esc="ov['partner_id'][1]"/></td>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <td>None</td>
+                                                                </t>
+                                                                <td><t t-esc="ov['name']"/></td>
+                                                                <td><t t-esc="ov['overtime_hours']"/></td>
+                                                            </tr>
+                                                        </t>
+                                                    </t>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th colspan="3">Total:</th>
+                                                        <th><t t-esc="sum(ov['overtime_hours'] for ov in overtime_hours if (ov['employee_id'][0] == emp['id'])) - sum(ov['unit_amount'] for ov in overtime_hours if ov['is_used_hours'] and (ov['employee_id'][0] == emp['id']))"/></th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </t>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <h4 class="text-center"> <t t-esc="form['employee_id'][1]"> </t> </h4>
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Cliente</th>
+                                                <th>Descripción</th>
+                                                <th>Horas extras</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="overtime_hours" t-as="line">
+                                                <tr t-if="line['is_used_hours']">
+                                                    <td><t t-esc="line['date']"/></td>
+                                                    <t t-if="line['partner_id'][1]">
+                                                        <td><t t-esc="line['partner_id'][1]"/></td>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <td>None</td>
+                                                    </t>
+                                                    <td><t t-esc="line['name']"/></td>
+                                                    <td>-<t t-esc="line['unit_amount']"/></td>
+                                                </tr>
+                                                <tr t-else="">
+                                                    <td><t t-esc="line['date']"/></td>
+                                                    <t t-if="line['partner_id'][1]">
+                                                        <td><t t-esc="line['partner_id'][1]"/></td>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <td>None</td>
+                                                    </t>
+                                                    <td><t t-esc="line['name']"/></td>
+                                                    <td><t t-esc="line['overtime_hours']"/></td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                        <!-- Totalizer for unit amount -->
+                                        <tfoot>
+                                            <tr>
+                                                <th colspan="3">Total:</th>
+                                                <th><t t-esc="sum(line['overtime_hours'] for line in overtime_hours) - sum(line['unit_amount'] for line in overtime_hours if line['is_used_hours'])"/></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </t>
+                            </div>
+                        </div>
+<!--                    </t>-->
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
